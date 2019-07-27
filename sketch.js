@@ -10,4 +10,5 @@ function draw() {
     print("test");
     background(255);
 	line(xSlider.value(),0,xSlider.value(),height);
+	rect(xSlider.value(),height/2,50,50);
 }
