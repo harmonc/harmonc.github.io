@@ -8,6 +8,6 @@ function setup() {
 }
 function draw() {
 	print("test");
-    background(200);
+    background(255);
 	line(xSlider.value(),0,xSlider.value(),height);
 }
