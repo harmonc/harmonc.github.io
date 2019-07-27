@@ -7,6 +7,7 @@ function setup() {
 	xSlider = createSlider(0,400,200);
 }
 function draw() {
+	xSlider.value().log();
     background(200);
 	line(xSlider.value(),0,xSlider.value(),height);
 }
