@@ -12,14 +12,16 @@ function setup() {
   background(0);
   button = createButton('Save Picture');
   button.mousePressed(myButton);
-  button.position(0, 0);
+  button.position(20, 50);
+  slider = createSlider(3,25,10);
+  slider.position(20,20);
 }
 
 function draw() {
+
   translate(width / 2.0, height / 2.0);
   for (var j = 0; j < 5; j++) {
-
-    strokeWeight(15);
+    strokeWeight(slider.value());
     colorMode(HSB, 255);
     var arm = 8;
     for (var a = 0; a < TWO_PI; a += TWO_PI / arm) {
