@@ -2,6 +2,10 @@ let xOff;
 let yOff;
 var p;
 var i;
+var test;
+var Test = function() {
+  this.message = 'test';
+};
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -15,10 +19,13 @@ function setup() {
   button.position(20, 50);
   slider = createSlider(3,25,10);
   slider.position(20,20);
+  test = new Test();
+  var gui = new dat.GUI();
+  gui.add(test,'message');
 }
 
 function draw() {
-
+  print(test.message);
   translate(width / 2.0, height / 2.0);
   for (var j = 0; j < 5; j++) {
     strokeWeight(slider.value());
