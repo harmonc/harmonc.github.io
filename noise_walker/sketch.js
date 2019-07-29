@@ -4,7 +4,11 @@ var p;
 var i;
 var test;
 var Test = function() {
-  this.message = 'test';
+  this.filename = 'save';
+  this.width = 10;
+  this.save = function(){
+    save(this.filename+'.png');
+  }
 };
 
 function setup() {
@@ -14,21 +18,18 @@ function setup() {
   yOff = random(100);
   i = 0;
   background(0);
-  button = createButton('Save Picture');
-  button.mousePressed(myButton);
-  button.position(20, 50);
-  slider = createSlider(3,25,10);
-  slider.position(20,20);
   test = new Test();
   var gui = new dat.GUI();
-  gui.add(test,'message');
+  gui.add(test,'width',1,25);
+  gui.add(test,'filename');
+  gui.add(test,'save');
 }
 
 function draw() {
   print(test.message);
   translate(width / 2.0, height / 2.0);
-  for (var j = 0; j < 5; j++) {
-    strokeWeight(slider.value());
+  for (var j = 0; j < 1; j++) {
+    strokeWeight(test.width);
     colorMode(HSB, 255);
     var arm = 8;
     for (var a = 0; a < TWO_PI; a += TWO_PI / arm) {

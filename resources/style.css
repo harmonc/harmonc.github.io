@@ -1,3 +1,16 @@
+html, body{
+	overflow: hidden;
+}
+
 h1{
 	text-align: center;
+}
+
+canvas{
+	float: left;
+}
+
+.p5Canvas{
+	float:left;
+	overflow: hidden;
 }
