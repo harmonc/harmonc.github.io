@@ -4,6 +4,14 @@ html, body{
 
 h1{
 	text-align: center;
+	color: white;
+}
+
+a:link, a:visited{
+	display:block;
+		text-align: center;
+		color:white;
+		text-decoration: none;
 }
 
 canvas{
