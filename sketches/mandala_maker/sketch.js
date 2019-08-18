@@ -13,7 +13,7 @@ var Test = function() {
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   i = 0;
-  background(0);
+  background(255);
   test = new Test();
   var gui = new dat.GUI();
   gui.add(test,'width',1,25);
@@ -41,5 +41,5 @@ function draw() {
 }
 
 var reset = function reset(){
-  background(0);
+  background(255);
 }
