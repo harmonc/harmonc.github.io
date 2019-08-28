@@ -61,8 +61,8 @@ var run = function run() {
   for (var i = 0; i < len; i++) {
     if (arr[i + len * 5] == 0) {} else {
       fill(test.Color1[0], test.Color1[1], test.Color1[2]);
-      for (var num = 0; num < 1; num++) {
-        ellipse(i * w / len, y, (w / len) * .9, (w / len) * .9);
+      for (var num = 0; num < 4; num++) {
+        rect(i * w / len, 0, w / len, w / len);
       }
     }
   }
@@ -79,8 +79,8 @@ var run = function run() {
     for (var i = 0; i < len; i++) {
       if (arr[i + len * 5] == 0) {} else {
         fill(test.Color1[0], test.Color1[1], test.Color1[2]);
-        for (var num = 0; num < 1; num++) {
-          ellipse(i * w / len, y, (w / len) * .9, (w / len) * .9);
+        for (var num = 0; num < 4; num++) {
+          rect(i * w / len, y, w / len, w / len);
         }
       }
     }
