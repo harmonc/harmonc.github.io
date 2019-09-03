@@ -9,6 +9,7 @@ var Test = function() {
   this.Run = run;
   this.Cells = 50;
   this.SpawnPercent = .5;
+  this.randomRate = .1;
   this.Color1 = [0, 0, 0];
   this.Color2 = [0, 0, 255];
 };
@@ -20,6 +21,7 @@ function setup() {
   gui.add(test, 'Filename');
   gui.add(test, 'Save');
   gui.add(test, 'SpawnPercent', 0, 1);
+  gui.add(test, 'randomRate',0,.5);
   gui.add(test, 'Rule', 0, 255).step(1);
   gui.add(test, 'Cells', 10, 500).step(1);
   gui.add(test, 'Run');
@@ -110,5 +112,13 @@ function getRuleNumber(index, prevGen, rules) {
       getRule += 1;
     }
   }
-  return parseInt(rules[getRule]);
+  var result = parseInt(rules[getRule]);
+  if(random(1)<test.randomRate){
+	  if(result == 1){
+		  result = 0;
+	  }else{
+		  result = 1;
+	  }
+  }
+  return result;
 }
