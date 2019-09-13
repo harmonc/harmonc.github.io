@@ -39,7 +39,7 @@ var run = function run() {
   noStroke();
   var cnv = createCanvas(window.innerWidth * .9, 1500);
   cnv.parent('sketch');
-  background(test.Color2[0], test.Color2[1], test.Color2[2]);
+  background(test.Color2);
   rule = test.Rule;
   ruleBinary = rule.toString(2);
   ruleArr = ruleBinary.split('');
@@ -62,7 +62,7 @@ var run = function run() {
   var w = width;
   for (var i = 0; i < len; i++) {
     if (arr[i + len * 5] == 0) {} else {
-      fill(test.Color1[0], test.Color1[1], test.Color1[2]);
+      fill(test.Color1);
       for (var num = 0; num < 4; num++) {
         rect(i * w / len, 0, w / len, w / len);
       }
@@ -80,7 +80,7 @@ var run = function run() {
     }
     for (var i = 0; i < len; i++) {
       if (arr[i + len * 5] == 0) {} else {
-        fill(test.Color1[0], test.Color1[1], test.Color1[2]);
+        fill(test.Color1);
         for (var num = 0; num < 4; num++) {
           rect(i * w / len, y, w / len, w / len);
         }

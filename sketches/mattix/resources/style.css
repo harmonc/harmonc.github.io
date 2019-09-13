@@ -1,0 +1,9 @@
+html, body {
+  overflow: hidden;
+  background-color: black;
+}
+
+#sketch {
+  text-align: center;
+  overflow: hidden;
+}
