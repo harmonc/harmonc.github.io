@@ -21,7 +21,7 @@ function displayText() {
   textSize(16);
   strokeWeight(.5);
   if (order != null && order.length > 1) {
-    var pathSize = calculatePath(order);
+    var pathSize = int(calculatePath(order));
     text("Length: " + pathSize, windowWidth / 2.0, 30);
   }else{
     text("Length: N/A",windowWidth/2.0,30);
@@ -36,7 +36,7 @@ function simulatedAnnealing() {
   } else {
     order = prevOrder;
   }
-  temp *= .99;
+  temp *= .999;
 }
 
 function findNewOrder(arr) {
