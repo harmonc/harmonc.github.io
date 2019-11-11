@@ -26,6 +26,9 @@ function displayText() {
   }else{
     text("Length: N/A",windowWidth/2.0,30);
   }
+  if(temp!=null){
+    text("temp: "+temp,windowWidth/2.0,60);
+  }
 }
 
 function simulatedAnnealing() {
@@ -98,7 +101,7 @@ function drawPath() {
 function mousePressed() {
   points.push(createVector(mouseX, mouseY));
   setOrder();
-  temp = 100;
+  temp = 10000;
 }
 
 function windowResized() {
