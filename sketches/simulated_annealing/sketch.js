@@ -1,9 +1,18 @@
 var points = [];
 var order;
 var temp;
+var showAnnealing;
+var checkbox;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
+  showAnnealing = false;
+  checkbox = createCheckbox('label', true);
+  checkbox.changed(myCheckedEvent);
+}
+
+function myCheckedEvent(){
+    showAnnealing = !showAnnealing;
 }
 
 function draw() {
@@ -23,15 +32,25 @@ function displayText() {
   if (order != null && order.length > 1) {
     var pathSize = int(calculatePath(order));
     text("Length: " + pathSize, windowWidth / 2.0, 30);
-  }else{
-    text("Length: N/A",windowWidth/2.0,30);
+  } else {
+    text("Length: N/A", windowWidth / 2.0, 30);
   }
-  if(temp!=null){
-    text("temp: "+temp,windowWidth/2.0,60);
+  if (temp != null) {
+    text("temp: " + temp, windowWidth / 2.0, 60);
   }
 }
 
 function simulatedAnnealing() {
+  if (showAnnealing) {
+    simulatedAnnealingStep();
+  } else {
+    while (temp >= .001) {
+      simulatedAnnealingStep();
+    }
+  }
+}
+
+function simulatedAnnealingStep() {
   var prevOrder = order;
   order = findNewOrder(order);
   if (Math.pow(Math.E, (-1 * (calculatePath(order) - calculatePath(prevOrder))) / temp) > random(1)) {
