@@ -1,6 +1,6 @@
 var row1, col1, row2, col2;
 var clicked;
-
+var gameScale = .75;
 class Tile {
   constructor(num, rightSide) {
     this.num = num;
@@ -29,15 +29,15 @@ var tile = [
 
 function setup() {
   var w = min(window.innerWidth,window.innerHeight);
-  var cnv = createCanvas(w,w);
+  var cnv = createCanvas(w*gameScale,w*gameScale);
   cnv.parent('sketch');
-  background(0);
+  background(52);
   textAlign(CENTER, CENTER);
   textSize(50);
 }
 
 function draw() {
-  background(0);
+  background(52);
   var l = width / 3;
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {
@@ -46,15 +46,20 @@ function draw() {
       var col = floor(map(mouseX, 0, width, 0, 3));
       var row = floor(map(mouseY, 0, width, 0, 3));
 
+      fill(0);
+      strokeWeight(10);
       if (tile[i][j].num <= 3) {
-        fill(0, 255, 0);
+        stroke(0, 150, 0);
       } else if (tile[i][j].num <= 6) {
-        fill(0, 0, 255);
+        stroke(0, 0, 150);
       } else {
-        fill(255, 0, 0);
+        stroke(150, 0, 0);
       }
 
+
       rect(-4 / 10 * l, -4 / 10 * l, 8 / 10 * l, 8 / 10 * l, 2 / 10 * l);
+
+      noStroke();
 
       if (i >= row1 && j >= col1 && i <= row && j <= col) {
         tile[i][j].select();
@@ -64,18 +69,19 @@ function draw() {
 
       if (tile[i][j].selected && clicked) {
         noFill();
-        stroke(255);
+        stroke(0,150);
         strokeWeight(10);
+        rect(-4 / 10 * l, -4 / 10 * l, 8 / 10 * l, 8 / 10 * l, 2 / 10 * l);
       }
-      rect(-4 / 10 * l, -4 / 10 * l, 8 / 10 * l, 8 / 10 * l, 2 / 10 * l);
 
-      stroke(0);
+
+      stroke(255);
       strokeWeight(1);
       if (!tile[i][j].rightSide) {
         rotate(PI);
       }
       line(-3 / 10 * l, 2 / 10 * l, 3 / 10 * l, 2 / 10 * l);
-      fill(0);
+      fill(255);
       text('' + tile[i][j].num, 0, 0);
       pop();
     }
@@ -142,5 +148,6 @@ function randomize(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  var w = min(window.innerWidth,window.innerHeight);
+  resizeCanvas(w*gameScale,w*gameScale);
 }

@@ -8,7 +8,7 @@ function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   showAnnealing = false;
   checkbox = createCheckbox('label', true);
-  checkbox.changed(myCheckedEvent);
+  checkbox.changed(myCheckedEvent);0
 }
 
 function myCheckedEvent(){
