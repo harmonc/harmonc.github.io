@@ -1,26 +1,39 @@
 var canvas;
 var arr = [];
+var noiseArr = [];
+var sideLength = 50;
 
 function setup() {
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.position(0, 0);
   canvas.style('z-index', -1);
+  var num = height/sideLength;
+  for(var i = 0; i < num; i++){
+    arr.push(width/2);
+    noiseArr.push(random(100));
+  }
 }
 
 function draw() {
-  background(52);
-  arr.push(createVector(mouseX,mouseY));
-  if (arr.length > 50) {
-    arr.shift();
-  }
+  background(15);
+  for(var i = 0; i < height; i+=sideLength){
+    stroke(255,5);
+    line(0,i,width,i);
 
-  var size = 25;
+    if(mouseY<=i+sideLength&&mouseY>i){
+      arr[i/sideLength]=mouseX-sideLength/2;
+    }else{
+      arr[i/sideLength]+=map(noise(noiseArr[i/sideLength]),0,1,-2,2);
+      arr[i/sideLength]%=width;
+      if(arr[i/sideLength]<-sideLength){
+        arr[i/sideLength]=width-sideLength;
+      }
+      noiseArr[i/sideLength]+=.001;
+    }
 
-  for (var i = 0; i < arr.length-1; i++) {
-    strokeWeight(map(i,0,arr.length-1,0,size));
-    colorMode(RGB,255);
-    stroke(0,0,255,map(i,0,arr.length-1,0,150));
-    line(arr[i].x,arr[i].y,arr[i+1].x,arr[i+1].y);
+    noStroke();
+    fill(0,0,255,50);
+    rect(arr[i/sideLength],i,sideLength,sideLength);
   }
 }
 
