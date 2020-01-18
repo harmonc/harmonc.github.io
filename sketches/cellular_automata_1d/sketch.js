@@ -12,6 +12,7 @@ var Test = function() {
   this.randomRate = .1;
   this.Color1 = [0, 0, 0];
   this.Color2 = [0, 0, 255];
+  this.Style = 'block';
 };
 
 function setup() {
@@ -21,12 +22,13 @@ function setup() {
   gui.add(test, 'Filename');
   gui.add(test, 'Save');
   gui.add(test, 'SpawnPercent', 0, 1);
-  gui.add(test, 'randomRate',0,.5);
+  gui.add(test, 'randomRate', 0, .5);
   gui.add(test, 'Rule', 0, 255).step(1);
   gui.add(test, 'Cells', 10, 500).step(1);
   gui.add(test, 'Run');
   gui.addColor(test, 'Color1');
   gui.addColor(test, 'Color2');
+  gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle']);
 }
 
 
@@ -64,7 +66,15 @@ var run = function run() {
     if (arr[i + len * 5] == 0) {} else {
       fill(test.Color1);
       for (var num = 0; num < 4; num++) {
-        rect(i * w / len, 0, w / len, w / len);
+        if (test.Style == 'block') {
+          rect(i * w / len, 0, w / len, w / len);
+        } else if (test.Style == 'circle') {
+          ellipse(i * w / len + ((w / len) / 2.0), 0 + (w / len) / 2.0, w / len, w / len);
+        } else if (test.Style == 'triangle') {
+          triangle(i * w / len, (w / len), i * w / len + (w / len), (w / len), i * w / len + (w / len) / 2.0, 0);
+        }else if(test.Style == 'semi-circle'){
+          arc(i * w / len + ((w / len) / 2.0), 0 + (w / len) / 2.0, w / len, w / len,0,PI);
+        }
       }
     }
   }
@@ -82,7 +92,15 @@ var run = function run() {
       if (arr[i + len * 5] == 0) {} else {
         fill(test.Color1);
         for (var num = 0; num < 4; num++) {
-          rect(i * w / len, y, w / len, w / len);
+          if (test.Style == 'block') {
+            rect(i * w / len, y, w / len, w / len);
+          } else if (test.Style == 'circle') {
+            ellipse(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len);
+          } else if (test.Style == 'triangle') {
+            triangle(i * w / len, y + (w / len), i * w / len + (w / len), y + (w / len), i * w / len + (w / len) / 2.0, y);
+          }else if(test.Style == 'semi-circle'){
+            arc(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len,0,PI);
+          }
         }
       }
     }
@@ -113,12 +131,12 @@ function getRuleNumber(index, prevGen, rules) {
     }
   }
   var result = parseInt(rules[getRule]);
-  if(random(1)<test.randomRate){
-	  if(result == 1){
-		  result = 0;
-	  }else{
-		  result = 1;
-	  }
+  if (random(1) < test.randomRate) {
+    if (result == 1) {
+      result = 0;
+    } else {
+      result = 1;
+    }
   }
   return result;
 }
