@@ -30,7 +30,7 @@ function setup() {
   gui.addColor(test, 'Foreground');
   gui.addColor(test, 'Background');
   gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1','right-triangle-2','right-triangle-3',
-  'right-triangle-4', 'diagonal', 'block-outline']);
+  'right-triangle-4', 'diagonal', 'block-outline','t-shape']);
   gui.add(test, 'Run');
 }
 
@@ -102,6 +102,10 @@ var run = function run() {
           } else if(test.Style == 'diagonal'){
             stroke(test.Foreground);
             line(i*w/len,y,i*w/len+w/len,y+w/len);
+          } else if(test.Style == 't-shape'){
+            stroke(test.Foreground);
+            line(i*w/len,y,i*w/len+w/len,y);
+            line(i*w/len+w/len/2.0,y,i*w/len+w/len/2.0,y+w/len);
           }
         }
       }
