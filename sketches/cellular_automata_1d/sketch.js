@@ -10,8 +10,9 @@ var Test = function() {
   this.Cells = 50;
   this.SpawnPercent = .5;
   this.randomRate = .1;
-  this.Color1 = [0, 0, 0];
-  this.Color2 = [0, 0, 255];
+  this.Background = [0, 0, 0];
+  this.Foreground = [0, 0, 255];
+  this.ToggleForeground = false;
   this.Style = 'block';
 };
 
@@ -25,10 +26,12 @@ function setup() {
   gui.add(test, 'randomRate', 0, .5);
   gui.add(test, 'Rule', 0, 255).step(1);
   gui.add(test, 'Cells', 10, 500).step(1);
+  gui.add(test,'ToggleForeground');
+  gui.addColor(test, 'Foreground');
+  gui.addColor(test, 'Background');
+  gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1','right-triangle-2','right-triangle-3',
+  'right-triangle-4', 'diagonal', 'block-outline']);
   gui.add(test, 'Run');
-  gui.addColor(test, 'Color1');
-  gui.addColor(test, 'Color2');
-  gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle']);
 }
 
 
@@ -41,7 +44,7 @@ var run = function run() {
   noStroke();
   var cnv = createCanvas(window.innerWidth * .9, 1500);
   cnv.parent('sketch');
-  background(test.Color2);
+  background(test.Background);
   rule = test.Rule;
   ruleBinary = rule.toString(2);
   ruleArr = ruleBinary.split('');
@@ -62,24 +65,7 @@ var run = function run() {
     // }
   }
   var w = width;
-  for (var i = 0; i < len; i++) {
-    if (arr[i + len * 5] == 0) {} else {
-      fill(test.Color1);
-      for (var num = 0; num < 4; num++) {
-        if (test.Style == 'block') {
-          rect(i * w / len, 0, w / len, w / len);
-        } else if (test.Style == 'circle') {
-          ellipse(i * w / len + ((w / len) / 2.0), 0 + (w / len) / 2.0, w / len, w / len);
-        } else if (test.Style == 'triangle') {
-          triangle(i * w / len, (w / len), i * w / len + (w / len), (w / len), i * w / len + (w / len) / 2.0, 0);
-        }else if(test.Style == 'semi-circle'){
-          arc(i * w / len + ((w / len) / 2.0), 0 + (w / len) / 2.0, w / len, w / len,0,PI);
-        }
-      }
-    }
-  }
-
-  for (var y = w / len; y < height; y += w / len) {
+  for (var y = 0; y < height; y += w / len) {
     var buffer = [];
     for (var i = 0; i < len * 10; i++) {
       buffer.push(getRuleNumber(i, arr, ruleArr));
@@ -89,17 +75,33 @@ var run = function run() {
       arr.push(buffer[i]);
     }
     for (var i = 0; i < len; i++) {
-      if (arr[i + len * 5] == 0) {} else {
-        fill(test.Color1);
+      if (arr[i + len * 5] == (test.ToggleForeground)?0:1) {} else {
         for (var num = 0; num < 4; num++) {
+          noStroke();
+          fill(test.Foreground);
           if (test.Style == 'block') {
             rect(i * w / len, y, w / len, w / len);
-          } else if (test.Style == 'circle') {
+          } else if(test.Style == 'block-outline'){
+            stroke(test.Foreground);
+            noFill();
+            rect(i * w / len, y, w / len, w / len);
+          }else if (test.Style == 'circle') {
             ellipse(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len);
           } else if (test.Style == 'triangle') {
             triangle(i * w / len, y + (w / len), i * w / len + (w / len), y + (w / len), i * w / len + (w / len) / 2.0, y);
-          }else if(test.Style == 'semi-circle'){
+          } else if(test.Style == 'semi-circle'){
             arc(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len,0,PI);
+          } else if(test.Style == 'right-triangle-1'){
+            triangle(i * w / len, y + (w / len), i * w / len + (w / len), y + (w / len), i * w / len, y);
+          } else if(test.Style == 'right-triangle-2'){
+            triangle(i * w / len, y + (w / len), i * w / len + (w / len), y, i * w / len, y);
+          } else if(test.Style == 'right-triangle-3'){
+            triangle(i * w / len+(w/len), y + (w / len), i * w / len + (w / len), y, i * w / len, y);
+          } else if(test.Style == 'right-triangle-4'){
+            triangle(i * w / len+(w/len), y + (w / len), i * w / len + (w / len), y, i * w / len, y+(w/len));
+          } else if(test.Style == 'diagonal'){
+            stroke(test.Foreground);
+            line(i*w/len,y,i*w/len+w/len,y+w/len);
           }
         }
       }
