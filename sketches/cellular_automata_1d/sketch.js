@@ -13,6 +13,8 @@ var Test = function() {
   this.Background = [0, 0, 0];
   this.Foreground = [0, 0, 255];
   this.ToggleForeground = false;
+  this.Width = window.innerWidth * .9;
+  this.Height = window.innerHeight *.9;
   this.Style = 'block';
 };
 
@@ -31,6 +33,8 @@ function setup() {
   gui.addColor(test, 'Background');
   gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1','right-triangle-2','right-triangle-3',
   'right-triangle-4', 'diagonal', 'block-outline','t-shape']);
+  gui.add(test,'Width',100,5000);
+  gui.add(test,'Height',100,5000);
   gui.add(test, 'Run');
 }
 
@@ -42,7 +46,7 @@ var run = function run() {
   var rule;
   var len = test.Cells;
   noStroke();
-  var cnv = createCanvas(window.innerWidth * .9, 1500);
+  var cnv = createCanvas(test.Width,test.Height);
   cnv.parent('sketch');
   background(test.Background);
   rule = test.Rule;
