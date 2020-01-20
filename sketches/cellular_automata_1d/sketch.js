@@ -9,12 +9,12 @@ var Test = function() {
   this.Run = run;
   this.Cells = 50;
   this.SpawnPercent = .5;
-  this.randomRate = .1;
+  this.randomRate = 0;
   this.Background = [0, 0, 0];
   this.Foreground = [0, 0, 255];
   this.ToggleForeground = false;
-  this.Width = window.innerWidth * .9;
-  this.Height = window.innerHeight *.9;
+  this.Width = window.innerWidth;
+  this.Height = window.innerHeight;
   this.Style = 'block';
 };
 
@@ -28,13 +28,14 @@ function setup() {
   gui.add(test, 'randomRate', 0, .5);
   gui.add(test, 'Rule', 0, 255).step(1);
   gui.add(test, 'Cells', 10, 500).step(1);
-  gui.add(test,'ToggleForeground');
+  gui.add(test, 'ToggleForeground');
   gui.addColor(test, 'Foreground');
   gui.addColor(test, 'Background');
-  gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1','right-triangle-2','right-triangle-3',
-  'right-triangle-4', 'diagonal', 'block-outline','t-shape']);
-  gui.add(test,'Width',100,5000);
-  gui.add(test,'Height',100,5000);
+  gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1', 'right-triangle-2', 'right-triangle-3',
+    'right-triangle-4', 'diagonal', 'horizontal', 'block-outline', 't-shape'
+  ]);
+  gui.add(test, 'Width', 100, 5000);
+  gui.add(test, 'Height', 100, 5000);
   gui.add(test, 'Run');
 }
 
@@ -46,7 +47,7 @@ var run = function run() {
   var rule;
   var len = test.Cells;
   noStroke();
-  var cnv = createCanvas(test.Width,test.Height);
+  var cnv = createCanvas(test.Width, test.Height);
   cnv.parent('sketch');
   background(test.Background);
   rule = test.Rule;
@@ -79,37 +80,40 @@ var run = function run() {
       arr.push(buffer[i]);
     }
     for (var i = 0; i < len; i++) {
-      if (arr[i + len * 5] == (test.ToggleForeground)?0:1) {} else {
+      if (arr[i + len * 5] == (test.ToggleForeground) ? 0 : 1) {} else {
         for (var num = 0; num < 4; num++) {
           noStroke();
           fill(test.Foreground);
           if (test.Style == 'block') {
             rect(i * w / len, y, w / len, w / len);
-          } else if(test.Style == 'block-outline'){
+          } else if (test.Style == 'block-outline') {
             stroke(test.Foreground);
             noFill();
             rect(i * w / len, y, w / len, w / len);
-          }else if (test.Style == 'circle') {
+          } else if (test.Style == 'circle') {
             ellipse(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len);
           } else if (test.Style == 'triangle') {
             triangle(i * w / len, y + (w / len), i * w / len + (w / len), y + (w / len), i * w / len + (w / len) / 2.0, y);
-          } else if(test.Style == 'semi-circle'){
-            arc(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len,0,PI);
-          } else if(test.Style == 'right-triangle-1'){
+          } else if (test.Style == 'semi-circle') {
+            arc(i * w / len + ((w / len) / 2.0), y + ((w / len) / 2.0), w / len, w / len, 0, PI);
+          } else if (test.Style == 'right-triangle-1') {
             triangle(i * w / len, y + (w / len), i * w / len + (w / len), y + (w / len), i * w / len, y);
-          } else if(test.Style == 'right-triangle-2'){
+          } else if (test.Style == 'right-triangle-2') {
             triangle(i * w / len, y + (w / len), i * w / len + (w / len), y, i * w / len, y);
-          } else if(test.Style == 'right-triangle-3'){
-            triangle(i * w / len+(w/len), y + (w / len), i * w / len + (w / len), y, i * w / len, y);
-          } else if(test.Style == 'right-triangle-4'){
-            triangle(i * w / len+(w/len), y + (w / len), i * w / len + (w / len), y, i * w / len, y+(w/len));
-          } else if(test.Style == 'diagonal'){
+          } else if (test.Style == 'right-triangle-3') {
+            triangle(i * w / len + (w / len), y + (w / len), i * w / len + (w / len), y, i * w / len, y);
+          } else if (test.Style == 'right-triangle-4') {
+            triangle(i * w / len + (w / len), y + (w / len), i * w / len + (w / len), y, i * w / len, y + (w / len));
+          } else if (test.Style == 'diagonal') {
             stroke(test.Foreground);
-            line(i*w/len,y,i*w/len+w/len,y+w/len);
-          } else if(test.Style == 't-shape'){
+            line(i * w / len, y, i * w / len + w / len, y + w / len);
+          } else if (test.Style == 't-shape') {
             stroke(test.Foreground);
-            line(i*w/len,y,i*w/len+w/len,y);
-            line(i*w/len+w/len/2.0,y,i*w/len+w/len/2.0,y+w/len);
+            line(i * w / len, y, i * w / len + w / len, y);
+            line(i * w / len + w / len / 2.0, y, i * w / len + w / len / 2.0, y + w / len);
+          } else if (test.Style == 'horizontal') {
+            stroke(test.Foreground);
+            line(i * w / len, y+w/len/2.0, i * w / len + w / len, y+w/len/2.0);
           }
         }
       }
