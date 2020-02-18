@@ -1,5 +1,5 @@
 class Squid {
-    constructor(x, y, a, scale) {
+    constructor(x, y, a, scale, seed) {
       this.r1 = random(-20, 20);
       this.r2 = random(-70, 0);
       this.r3 = random(0, 20);
@@ -17,7 +17,7 @@ class Squid {
       this.y = y;
       this.a = a;
       this.scale = scale;
-      this.seed = random(1000);
+      this.seed = seed;
     }
 
     update() {

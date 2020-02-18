@@ -2,7 +2,7 @@ var squid;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  squid = new Squid(window.innerWidth/2,window.innerHeight/2,HALF_PI,1);
+  squid = new Squid(window.innerWidth/2,window.innerHeight/2,HALF_PI,1, random(100000));
 }
 
 function draw() {
@@ -13,8 +13,7 @@ function draw() {
 }
 
 function mousePressed(){
-  squid = new Squid(window.innerWidth/2,window.innerHeight/2,HALF_PI,1);
-
+  squid = new Squid(window.innerWidth/2,window.innerHeight/2,HALF_PI,1, random(100000));
 }
 
 function windowResized() {
