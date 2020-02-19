@@ -3,8 +3,8 @@ var squids;
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   squids = [];
-  for (var i = 0; i < 5; i++) {
-    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI, 1, random(100000)));
+  for (var i = 0; i < 10; i++) {
+    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI, .5, random(100000)));
   }
 }
 
