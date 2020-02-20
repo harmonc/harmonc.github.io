@@ -19,7 +19,7 @@ function draw() {
 
 function mousePressed() {
   squids = [];
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 15; i++) {
     squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI, .5, random(100000)));
   }
 }
