@@ -1,10 +1,12 @@
 var squids;
-
+var num_squids;
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   squids = [];
-  for (var i = 0; i < 10; i++) {
-    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI, .5, random(100000)));
+  var r = random(1000);
+  num_squids = (width*height)/30000;
+  for (var i = 0; i < num_squids; i++) {
+    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI+random(-.3,.3), random(.3,.7), random(r)));
   }
 }
 
@@ -19,8 +21,9 @@ function draw() {
 
 function mousePressed() {
   squids = [];
-  for (var i = 0; i < 15; i++) {
-    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI, .5, random(100000)));
+  var r = random(1000);
+  for (var i = 0; i < num_squids; i++) {
+    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI+random(-.3,.3), random(.3,.7), r));
   }
 }
 

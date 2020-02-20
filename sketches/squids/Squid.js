@@ -12,7 +12,7 @@ class Squid {
       this.outerEyeR = random(30, 40);
       this.innerEyeR = random(15, this.outerEyeR-10);
       this.eyeR1 = random(-20, 20);
-      this.tentacleVar = random(.1, 1);
+      this.tentacleVar = random(.1, .2);
       this.x = x;
       this.y = y;
       this.a = a;
@@ -55,7 +55,7 @@ class Squid {
 
       stroke(0);
       strokeWeight(5);
-      this.t = new TentacleSystem(0, 49, HALF_PI, this.squidColor, this.tentacleVar, random(50,125),random(25,50), this.seed);
+      this.t = new TentacleSystem(0, 49, HALF_PI, this.squidColor, this.tentacleVar, random(50,100),random(25,50), this.seed);
       this.t.show();
 
       for (var i = 0; i < 2; i++) {
