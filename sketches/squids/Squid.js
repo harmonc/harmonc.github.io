@@ -1,5 +1,5 @@
 class Squid {
-    constructor(x, y, a, scale, seed) {
+    constructor(x, y, a, scale) {
       this.r1 = random(-20, 20);
       this.r2 = random(-70, 0);
       this.r3 = random(0, 20);
@@ -17,7 +17,7 @@ class Squid {
       this.y = y;
       this.a = a;
       this.scale = scale;
-      this.seed = seed;
+      this.t = new TentacleSystem(0, 49, HALF_PI, this.squidColor, this.tentacleVar, random(50,100),random(25,50));
     }
 
     update() {
@@ -55,7 +55,7 @@ class Squid {
 
       stroke(0);
       strokeWeight(5);
-      this.t = new TentacleSystem(0, 49, HALF_PI, this.squidColor, this.tentacleVar, random(50,100),random(25,50), this.seed);
+
       this.t.show();
 
       for (var i = 0; i < 2; i++) {

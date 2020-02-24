@@ -3,28 +3,39 @@ var num_squids;
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   squids = [];
-  var r = random(1000);
   num_squids = (width*height)/30000;
+  var a = random(TWO_PI);
   for (var i = 0; i < num_squids; i++) {
-    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI+random(-.3,.3), random(.3,.7), random(r)));
+    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), a+random(-.2,.2), random(.3,.7)));
   }
+  show();
 }
 
 function draw() {
-  background(0, 105, 148);
-  stroke(255);
-  point(mouseX, mouseY);
+
+}
+
+function show(){
+  background(0, 50, 100);
   for (var i = 0; i < squids.length; i++) {
     squids[i].display();
+    for(var j = 0; j < random(500); j++){
+      noStroke();
+      fill(255,random(50));
+      var s = random(30);
+      ellipse(random(windowWidth),random(windowHeight),s,s);
+    }
   }
+
 }
 
 function mousePressed() {
   squids = [];
-  var r = random(1000);
+  var a = random(TWO_PI);
   for (var i = 0; i < num_squids; i++) {
-    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), HALF_PI+random(-.3,.3), random(.3,.7), r));
+    squids.push(new Squid(random(window.innerWidth), random(window.innerHeight), a+random(-.2,.2), random(.3,.7)));
   }
+  show();
 }
 
 function windowResized() {

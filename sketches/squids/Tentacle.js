@@ -1,18 +1,15 @@
 class Tentacle {
 
-  constructor(x, y, a, v, c, l, seed) {
+  constructor(x, y, a, v, c, l) {
     this.x = x;
     this.y = y;
     this.a = a;
     this.c = c;
     this.v = v;
     this.l = l / 10.0;
-    this.seed = seed;
   }
 
   create() {
-    noiseSeed(this.seed);
-    randomSeed(this.seed);
     this.points = [];
     this.angles = [];
     //  ellipse(x, y, 25, 25);
@@ -32,7 +29,7 @@ class Tentacle {
     for (var i = 1; i < this.points.length; i++) {
       this.start = this.points[i - 1];
       this.end = this.points[i];
-      line(this.start.x, this.start.y, this.end.x, this.end.y);
+    //  line(this.start.x, this.start.y, this.end.x, this.end.y);
     }
     this.pointsRight = [];
     this.pointsLeft = [];
@@ -43,6 +40,9 @@ class Tentacle {
       line(this.start.x, this.start.y, this.start.x - (25 - i * 2) / 2.0 * cos(this.angles[i]), this.start.y - (25 - i * 2) / 2.0 * sin(this.angles[i]));
       this.pointsLeft.push(createVector(this.start.x - (25 - i * 2) / 2.0 * cos(this.angles[i]), this.start.y - (25 - i * 2) / 2.0 * sin(this.angles[i])));
     }
+  }
+
+  show(){
     fill(this.c);
     beginShape();
     for (var i = 0; i < this.pointsRight.length; i++) {
