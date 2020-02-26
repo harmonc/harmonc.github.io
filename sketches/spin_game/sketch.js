@@ -31,13 +31,13 @@ function setup() {
   var w = min(window.innerWidth,window.innerHeight);
   var cnv = createCanvas(w*gameScale,w*gameScale);
   cnv.parent('sketch');
-  background(52);
+  background(12);
   textAlign(CENTER, CENTER);
   textSize(50);
 }
 
 function draw() {
-  background(52);
+  background(12);
   var l = width / 3;
   for (var i = 0; i < 3; i++) {
     for (var j = 0; j < 3; j++) {

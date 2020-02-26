@@ -16,7 +16,7 @@ function myCheckedEvent(){
 }
 
 function draw() {
-  background(52);
+  background(12);
   if (order != null && order.length > 1) {
     simulatedAnnealing();
   }
