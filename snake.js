@@ -1,8 +1,9 @@
 class Snake {
 
-  constructor(x, y) {
+  constructor(x, y, randomness) {
     this.xPos = x;
     this.yPos = y;
+    this.randomness = randomness;
     this.dir = int(random(4));
   }
 
@@ -27,7 +28,7 @@ class Snake {
     var moved = false;
     var count = 0;
     while (!moved && count < 4) {
-      if (random(1) > .8) {
+      if (random(1) > randomness) {
         this.dir = int(random(4));
       }
       switch (this.dir) {

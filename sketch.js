@@ -4,12 +4,14 @@ var w;
 var h;
 var grid;
 var snake;
+var randomness;
 
 function setup() {
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.position(0, 0);
   canvas.style('z-index', -1);
-  size = 10;
+  size = int(random(5,20));
+  randomness = random(.6,1);
   w = int(window.innerWidth / size) + 1;
   h = int(window.innerHeight / size) + 1;
   grid = [];
@@ -22,7 +24,7 @@ function setup() {
     grid.push(row);
   }
   console.log(grid);
-  snake = new Snake(int(random(grid[0].length)), int(random(grid.length)));
+  snake = new Snake(int(random(grid[0].length)), int(random(grid.length)), randomness);
   console.log(snake.xPos);
   console.log(snake.yPos);
   grid[snake.yPos][snake.xPos] = true;
@@ -56,7 +58,7 @@ function respawn() {
   }
   if(!done){
     grid[yPos][xPos] = true;
-    result = new Snake(xPos,yPos);
+    result = new Snake(xPos,yPos, randomness);
   }
   return result;
 }
