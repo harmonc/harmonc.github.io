@@ -1,32 +1,38 @@
-html, body{
-	overflow: hidden;
+html, body {
+  overflow: hidden;
 }
 
-h1{
-	text-align: center;
-	color: white;
-	font-size: 2em;
+h1 {
+  text-align: center;
+  color: rgb(220,220,220);
+  font-size: 2em;
 }
 
 .links {
-	display:block;
-	width:100%;
-	text-align: center;
-	margin:10px;
-	font-size: 1.25em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 20px;
+  font-size: 1.25em;
 }
 
-a{
-	display: inline-block;
-	color:white;
-	text-decoration: none;
+a {
+  display: inline-block;
+  color: rgb(200,200,200);
+    text-decoration: none;
 }
 
-canvas{
-	float: left;
+a:hover {
+  font-size: 1.5em;
+	color: rgb(0,255,100);
+	margin: -10px;
 }
 
-.p5Canvas{
-	float:left;
-	overflow: hidden;
+canvas {
+  float: left;
+}
+
+.p5Canvas {
+  float: left;
+  overflow: hidden;
 }
