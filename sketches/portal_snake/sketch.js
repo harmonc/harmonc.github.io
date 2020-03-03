@@ -1,14 +1,14 @@
 var s;
 var snake_size;
 var grid_count = 15;
-
+var count = 0;
 var snake;
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
   background(12);
   setGrid();
-  snake = new Snake(7, 7);
+  snake = new Snake(7, 7, grid_count);
 }
 
 function draw() {
@@ -29,6 +29,11 @@ function draw() {
   for (var i = 0; i < snake.blocks.length; i++) {
     rect(windowWidth / 2 - s / 2 + snake_size * snake.blocks[i][0], windowHeight / 2 - s / 2 + snake_size * snake.blocks[i][1], snake_size, snake_size);
   }
+  if ((count % 10) == 0) {
+    snake.updateSnake();
+    count = 0;
+  }
+  count++;
 }
 
 function windowResized() {
@@ -38,13 +43,13 @@ function windowResized() {
 
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
-    snake.moveWest();
+    snake.headWest();
   } else if (keyCode === RIGHT_ARROW) {
-    snake.moveEast();
+    snake.headEast();
   } else if (keyCode === UP_ARROW) {
-    snake.moveNorth();
+    snake.headNorth();
   } else if (keyCode === DOWN_ARROW) {
-    snake.moveSouth();
+    snake.headSouth();
   }
 }
 
