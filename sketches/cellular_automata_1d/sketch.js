@@ -56,6 +56,13 @@ var run = function run() {
   while (ruleArr.length < 8) {
     ruleArr.unshift('0');
   }
+  for(var i = 0; i < ruleArr.length; i++){
+    if(ruleArr[i]=='0'){
+      ruleArr[i] = '1';
+    }else{
+      ruleArr[i] = '0';
+    }
+  }
   print(ruleArr);
   for (var i = 0; i < len * 10; i++) {
     if (random(1) > this.SpawnPercent) {
