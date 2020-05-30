@@ -12,6 +12,7 @@ var Test = function() {
   this.randomRate = 0;
   this.Background = [0, 0, 0];
   this.Foreground = [0, 0, 255];
+  this.Foregound_2 = [0,0,255]
   this.ToggleForeground = false;
   this.Width = window.innerWidth;
   this.Height = window.innerHeight;
@@ -32,7 +33,7 @@ function setup() {
   gui.addColor(test, 'Foreground');
   gui.addColor(test, 'Background');
   gui.add(test, 'Style', ['block', 'circle', 'triangle', 'semi-circle', 'right-triangle-1', 'right-triangle-2', 'right-triangle-3',
-    'right-triangle-4', 'diagonal', 'horizontal', 'block-outline', 't-shape'
+    'right-triangle-4', 'diagonal', 'horizontal', 'vertical', 'block-outline', 't-shape', 'squiggle'
   ]);
   gui.add(test, 'Width', 100, 5000);
   gui.add(test, 'Height', 100, 5000);
@@ -87,7 +88,14 @@ var run = function run() {
       arr.push(buffer[i]);
     }
     for (var i = 0; i < len; i++) {
-      if (arr[i + len * 5] == (test.ToggleForeground) ? 0 : 1) {} else {
+      if (arr[i + len * 5] == (test.ToggleForeground) ? 0 : 1) {
+		  if(test.Style == 'squiggle'){
+			  stroke(test.Foreground);
+			  noFill()
+			  strokeWeight(2)
+			  arc(i * w / len+ ((w / len) / 2.0), y, w / len, w / len,0,PI)
+		  }
+	  } else {
         for (var num = 0; num < 4; num++) {
           noStroke();
           fill(test.Foreground);
@@ -121,7 +129,15 @@ var run = function run() {
           } else if (test.Style == 'horizontal') {
             stroke(test.Foreground);
             line(i * w / len, y+w/len/2.0, i * w / len + w / len, y+w/len/2.0);
-          }
+		  }	else if(test.Style == 'vertical'){
+			stroke(test.Foreground)
+			line(i* w / len+w/len/2.0, y, i* w / len+w/len/2.0 , y + w / len)
+		  } else if(test.Style == 'squiggle'){
+			noFill()
+			stroke(test.Foreground);
+			strokeWeight(2)
+			arc(i * w / len+ ((w / len) / 2.0), y, w / len, w / len,PI,TWO_PI)
+		  }
         }
       }
     }

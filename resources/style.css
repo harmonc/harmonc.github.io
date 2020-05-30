@@ -2,6 +2,10 @@ html, body {
   overflow: hidden;
 }
 
+#main{
+ /* background-color:white */
+}
+
 h1 {
   text-align: center;
   color: rgb(220,220,220);
