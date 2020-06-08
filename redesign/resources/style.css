@@ -25,6 +25,10 @@ li a{
   text-decoration: none;
 }
 
+.selected {
+  background-color: #4CAF50;
+}
+
 li a:hover {
   background-color: #111;
 }
