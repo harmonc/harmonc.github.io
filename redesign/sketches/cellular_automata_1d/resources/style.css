@@ -1,0 +1,11 @@
+body{
+		background-color: rgb(12,12,12);
+}
+
+.P5canvas{
+	float:left;
+}
+
+#sketch{
+	text-align: center;
+}
