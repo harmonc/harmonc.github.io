@@ -42,3 +42,28 @@ button{
 h1{
 	font-family: 'Roboto Slab', serif;
 }
+
+.option{
+	float: left;
+	width: 25%;
+	position: relative;
+}
+
+.label{
+	width: 100%;
+	height: 25%;
+	background-color: white;
+	position:relative;
+}
+
+.tag{
+	padding:0px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+img{
+	width: 100%;
+			vertical-align: top;
+}
