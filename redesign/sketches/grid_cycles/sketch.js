@@ -1,6 +1,6 @@
 var board = [];
-var GRID_SIZE = 15;
-var SQUARE_SIZE = 40;
+var GRID_SIZE = 200;
+var SQUARE_SIZE = 3;
 var active_cells = [];
 var done = false;
 class Cell{
@@ -36,7 +36,7 @@ function draw(){
 }
 
 function mousePressed(){
-	console.log(active_cells.length);
+	save("test.png");
 }
 
 function drawBoard(){
