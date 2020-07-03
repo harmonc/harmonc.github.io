@@ -1,6 +1,6 @@
 var board = [];
-var GRID_SIZE = 10;
-var SQUARE_SIZE = 50;
+var GRID_SIZE = 15;
+var SQUARE_SIZE = 40;
 var active_cells = [];
 var done = false;
 class Cell{
@@ -12,6 +12,7 @@ class Cell{
 }
 
 function setup() {
+	noStroke();
   createCanvas(window.innerWidth, window.innerHeight);
   background(255);
 	for(var i = 0; i < GRID_SIZE; i++){
@@ -25,10 +26,10 @@ function setup() {
 	var cell = new Cell(Math.floor(random(1,GRID_SIZE-1)),Math.floor(random(1,GRID_SIZE-1)));
 	board[cell.row][cell.col] = true;
 	active_cells.push(cell);
+	drawBoard();
 }
 
 function draw(){
-	drawBoard();
 	while(!done){
 		done = grow();
 	}
@@ -87,6 +88,8 @@ function grow(){
     active_cells.push(newCell);
     if (newCell!=null) {
       board[newCell.row][newCell.col]=true;
+	  fill(0);
+	  rect(newCell.col*SQUARE_SIZE,newCell.row*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
     }
     updateCellStatus();
   }
