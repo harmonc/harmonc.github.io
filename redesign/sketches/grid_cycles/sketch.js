@@ -1,7 +1,8 @@
 var board = [];
-var GRID_SIZE = 100;
-var SQUARE_SIZE = 5;
+var GRID_SIZE = 10;
+var SQUARE_SIZE = 50;
 var active_cells = [];
+var done = false;
 class Cell{
 	constructor(row, col) {
 		this.row = row;
@@ -21,17 +22,20 @@ function setup() {
 		}
 		board.push(row);
 	}
-	console.log(board);
 	var cell = new Cell(Math.floor(random(1,GRID_SIZE-1)),Math.floor(random(1,GRID_SIZE-1)));
 	board[cell.row][cell.col] = true;
 	active_cells.push(cell);
-	console.log(active_cells);
-	console.log(onBoard(-1,5));
 }
 
 function draw(){
 	drawBoard();
-	grow();
+	while(!done){
+		done = grow();
+	}
+}
+
+function mousePressed(){
+	console.log(active_cells.length);
 }
 
 function drawBoard(){
@@ -105,17 +109,27 @@ function activeCount(){
 }
 
 function updateCellStatus() {
-  var active = activeCount();
-  for (var i = 0; i < active_cells.length;i++) {
-	  var cell = active_cells[i];
-    if (!cell.dead) {
-      cell.dead = !isCellAlive(cell);
-      if (active > 1 && random(1)<.1) {
-        cell.dead = true;
-        active = activeCount();
-      }
-    }
+	var active = activeCount();
+	var to_remove = [];
+	for (var i = 0; i < active_cells.length;i++) {
+		var cell = active_cells[i];
+		if(!isCellAlive(cell)){
+			cell.dead = true;
+			to_remove.push(i)
+		}
+		if (!cell.dead) {
+			if (active > 1 && random(1)<.1) {
+				cell.dead = true;
+				active = activeCount();
+			}
+		}
+	}
+  for(var i = to_remove.length-1; i >= 0; i--){
+	  active_cells.splice(to_remove[i],1);
   }
+  
+
+  
   active = activeCount();
   if (active == 0) {
     for (var i = 0; i < active_cells.length;i++) {
