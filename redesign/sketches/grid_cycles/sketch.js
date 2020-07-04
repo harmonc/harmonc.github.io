@@ -1,6 +1,6 @@
 var board = [];
-var GRID_SIZE = 200;
-var SQUARE_SIZE = 3;
+var GRID_SIZE = 100;
+var SQUARE_SIZE = 5;
 var active_cells = [];
 var done = false;
 class Cell{
@@ -13,8 +13,8 @@ class Cell{
 
 function setup() {
 	noStroke();
-  createCanvas(window.innerWidth, window.innerHeight);
-  background(255);
+	createCanvas(window.innerWidth, window.innerHeight);
+	background(255);
 	for(var i = 0; i < GRID_SIZE; i++){
 		var row = []
 		for(var j = 0; j < GRID_SIZE; j++){
@@ -30,9 +30,7 @@ function setup() {
 }
 
 function draw(){
-	while(!done){
-		done = grow();
-	}
+	grow();
 }
 
 function mousePressed(){
@@ -53,7 +51,7 @@ function drawBoard(){
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  //resizeCanvas(windowWidth, windowHeight);
 }
 
 function grow(){
@@ -121,7 +119,7 @@ function updateCellStatus() {
 			to_remove.push(i)
 		}
 		if (!cell.dead) {
-			if (active > 1 && random(1)<.1) {
+			if (active > 1 && random(1)<1) {
 				cell.dead = true;
 				active = activeCount();
 			}
