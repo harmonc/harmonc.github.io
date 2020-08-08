@@ -14,7 +14,7 @@ class Cell{
 function setup() {
 	noStroke();
 	createCanvas(window.innerWidth, window.innerHeight);
-	background(255);
+	background(0);
 	for(var i = 0; i < GRID_SIZE; i++){
 		var row = []
 		for(var j = 0; j < GRID_SIZE; j++){
@@ -51,7 +51,7 @@ function drawBoard(){
 }
 
 function windowResized() {
-  //resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function grow(){
