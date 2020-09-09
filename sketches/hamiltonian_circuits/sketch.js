@@ -1,6 +1,6 @@
 var board = [];
-var GRID_SIZE = 12;
-var SQUARE_SIZE = 50;
+var GRID_SIZE = 50;
+var SQUARE_SIZE = 10;
 var active_cells = [];
 var done = false;
 class Cell {
@@ -72,7 +72,7 @@ function draw() {
     }
     condenseSegments(segs);
     stroke(0);
-    strokeWeight(10);
+    strokeWeight(1);
 
     for (var i = 0; i < segs.length; i++) {
       var seg = segs[i];
