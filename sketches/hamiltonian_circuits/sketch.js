@@ -1,9 +1,10 @@
 var board = [];
-var GRID_SIZE = 20;
-var SQUARE_SIZE = 20;
+var GRID_SIZE = 50;
+var SQUARE_SIZE = 10;
 var active_cells = [];
 var inactive_cells = [];
 var done = false;
+var quitGrow = false;
 class Cell {
 	constructor(row, col) {
 		this.row = row;
@@ -44,11 +45,16 @@ function setup() {
 
 
 function draw() {
-	var done;
-	for (var i2 = 0; i2 < 30; i2++) {
+    if(!quitGrow){
+	for (var i2 = 0; i2 < 1; i2++) {
 		done = grow();
 	}
+    }
+    if (mouseIsPressed){
+                quitGrow = true;
+        done = true;
 
+    }
 
     //background(255);
     //drawCells();
@@ -90,13 +96,13 @@ function draw() {
 		}
 		condenseSegments(segs);
         condenseSegments(interiorSegs);
-//		stroke(0);
-//		strokeWeight(1);
-//		var skewValue = 0;
-//		for (var i = 0; i < segs.length; i++) {
-//			var seg = segs[i];
-//			line(seg.p1.x + seg.p1.y * skewValue, seg.p1.y+seg.p1.x * skewValue, seg.p2.x + seg.p2.y * skewValue, seg.p2.y+seg.p2.x * skewValue);
-//		}
+		stroke(0);
+		strokeWeight(1);
+		var skewValue = 0;
+		for (var i = 0; i < segs.length; i++) {
+			var seg = segs[i];
+			line(seg.p1.x + seg.p1.y * skewValue, seg.p1.y+seg.p1.x * skewValue, seg.p2.x + seg.p2.y * skewValue, seg.p2.y+seg.p2.x * skewValue);
+		}
         stroke(0,0,255);
         for(let i = 0; i < interiorSegs.length; i++){
             var seg = interiorSegs[i];
@@ -194,12 +200,9 @@ function grow() {
 		}
 		var row = active_cells[r].row;
 		var col = active_cells[r].col;
-		var dir = 0;
-        if(random(1)>.5){
-            dir = 3;
-        }//Math.floor(random(4));
+		var dir = Math.floor(random(4));
 		while (!cellOpen(row, col, dir)) {
-			dir = (dir + 1) % 4;
+			dir = Math.floor(random(4)); //(dir + 1) % 4;
 		}
 		var newCell = null;
 		switch (dir) {
