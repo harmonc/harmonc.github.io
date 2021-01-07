@@ -22,8 +22,8 @@ function draw(){}
 
 function mousePressed(){
   background("#f9f361");
-  for(let i = 7; i >= -1; i--){
-    for(let j = 7; j >= -1; j--){
+  for(let i = floor(height/100)+1; i >= -1; i--){
+    for(let j = floor(width/100)+1; j >= -1; j--){
       let w = random(200,250)
       if(i%2==0){
         orange(j*200,i*100+random(50),w);
