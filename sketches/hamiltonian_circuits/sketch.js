@@ -1,5 +1,5 @@
 var board = [];
-var GRID_SIZE = 50;
+var GRID_SIZE = 20;
 var SQUARE_SIZE = 10;
 var active_cells = [];
 var inactive_cells = [];
