@@ -1,10 +1,11 @@
 var board = [];
-var GRID_SIZE = 20;
+var GRID_SIZE = 10;
 var SQUARE_SIZE = 10;
 var active_cells = [];
 var inactive_cells = [];
 var done = false;
 var quitGrow = false;
+
 class Cell {
 	constructor(row, col) {
 		this.row = row;
@@ -25,95 +26,111 @@ function setup() {
 	noStroke();
 	createCanvas(window.innerWidth, window.innerHeight, SVG);
 
-	for (var i = 0; i < GRID_SIZE; i++) {
-		var row = []
-		for (var j = 0; j < GRID_SIZE; j++) {
-			row.push(false);
-		}
-		board.push(row);
-	}
+    var textResult = []
+    for(let n = 0; n < 10; n++){
+        board = [];
+        GRID_SIZE = 10;
+        SQUARE_SIZE = 10;
+        active_cells = [];
+        inactive_cells = [];
+        done = false;
+        quitGrow = false;
 
-	var cell = new Cell(Math.floor(random(1, GRID_SIZE - 1)), Math.floor(random(1, GRID_SIZE - 1)));
-	board[cell.row][cell.col] = true;
-    noStroke();
-    fill(0);
-    rect(cell.col * SQUARE_SIZE, cell.row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+        for (var i = 0; i < GRID_SIZE; i++) {
+            var row = []
+            for (var j = 0; j < GRID_SIZE; j++) {
+                row.push(false);
+            }
+            board.push(row);
+        }
 
-	active_cells.push(cell);
+        var cell = new Cell(Math.floor(random(1, GRID_SIZE - 1)), Math.floor(random(1, GRID_SIZE - 1)));
+        board[cell.row][cell.col] = true;
+        noStroke();
+        fill(0);
+        rect(cell.col * SQUARE_SIZE, cell.row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE);
+
+        active_cells.push(cell);
+
+        if(!quitGrow){
+            while(!done){
+                done = grow();
+            }
+        }
+        if (mouseIsPressed){
+            quitGrow = true;
+            done = true;
+
+        }
+
+        //background(255);
+        //drawCells();
+
+        if(done){
+            background(255);
+
+            var segs = [];
+            var interiorSegs = [];
+            var s = SQUARE_SIZE;
+
+
+            for (var i = 0; i < GRID_SIZE; i++) {
+                for (var j = 0; j < GRID_SIZE; j++) {
+                    var midX = j*s+s/2.0;
+                    var midY = i*s+s/2.0;
+                    if (board[i][j]) {
+                        let coord = midX + ',' + midY
+                        textResult.push(coord)
+                        if (!getBoard(i - 1, j)) {
+                            segs.push(new Segment(j * s, i * s, j * s + s, i * s));
+                        }else if(i-1>=0){
+                            interiorSegs.push(new Segment(midX,midY,midX,midY-s/2.0));         
+                        }
+                        if (!getBoard(i + 1, j)) {
+                            segs.push(new Segment(j * s, i * s + s, j * s + s, i * s + s));
+                        }else if(i+1<GRID_SIZE){
+                            interiorSegs.push(new Segment(midX,midY,midX,midY+s/2.0));         
+                        }
+                        if (!getBoard(i, j - 1)) {
+                            segs.push(new Segment(j * s, i * s, j * s, i * s + s));
+                        }else if(j-1>=0){
+                            interiorSegs.push(new Segment(midX,midY,midX-s/2.0,midY));         
+                        }
+                        if (!getBoard(i, j + 1)) {
+                            segs.push(new Segment(j * s + s, i * s, j * s + s, i * s + s));
+                        }else if(j+1<GRID_SIZE){
+                            interiorSegs.push(new Segment(midX,midY,midX+s/2.0,midY));         
+                        }
+                    }
+                }
+            }
+            condenseSegments(segs);
+            condenseSegments(interiorSegs);
+            stroke(0);
+            strokeWeight(1);
+            var skewValue = 0;
+            for (var i = 0; i < segs.length; i++) {
+                var seg = segs[i];
+                line(seg.p1.x + seg.p1.y * skewValue, seg.p1.y+seg.p1.x * skewValue, seg.p2.x + seg.p2.y * skewValue, seg.p2.y+seg.p2.x * skewValue);
+            }
+            stroke(0,0,255);
+            for(let i = 0; i < interiorSegs.length; i++){
+                var seg = interiorSegs[i];
+                line(seg.p1.x,seg.p1.y,seg.p2.x,seg.p2.y);
+            }
+
+            console.log(interiorSegs.length);
+            textResult.push("next")
+        }
+        //save("test.svg");
+    }
+     save(textResult,"result.txt")
 }
 
 
 
 function draw() {
-    if(!quitGrow){
-	for (var i2 = 0; i2 < 1; i2++) {
-		done = grow();
-	}
-    }
-    if (mouseIsPressed){
-                quitGrow = true;
-        done = true;
-
-    }
-
-    //background(255);
-    //drawCells();
     
-	if(done){
-		background(255);
-
-		var segs = [];
-        var interiorSegs = [];
-		var s = SQUARE_SIZE;
-
-		for (var i = 0; i < GRID_SIZE; i++) {
-			for (var j = 0; j < GRID_SIZE; j++) {
-                var midX = j*s+s/2.0;
-                var midY = i*s+s/2.0;
-				if (board[i][j]) {
-					if (!getBoard(i - 1, j)) {
-						segs.push(new Segment(j * s, i * s, j * s + s, i * s));
-					}else if(i-1>=0){
-                        interiorSegs.push(new Segment(midX,midY,midX,midY-s/2.0));         
-                    }
-					if (!getBoard(i + 1, j)) {
-						segs.push(new Segment(j * s, i * s + s, j * s + s, i * s + s));
-					}else if(i+1<GRID_SIZE){
-                        interiorSegs.push(new Segment(midX,midY,midX,midY+s/2.0));         
-                    }
-					if (!getBoard(i, j - 1)) {
-						segs.push(new Segment(j * s, i * s, j * s, i * s + s));
-					}else if(j-1>=0){
-                        interiorSegs.push(new Segment(midX,midY,midX-s/2.0,midY));         
-                    }
-					if (!getBoard(i, j + 1)) {
-						segs.push(new Segment(j * s + s, i * s, j * s + s, i * s + s));
-					}else if(j+1<GRID_SIZE){
-                        interiorSegs.push(new Segment(midX,midY,midX+s/2.0,midY));         
-                    }
-				}
-			}
-		}
-		condenseSegments(segs);
-        condenseSegments(interiorSegs);
-		stroke(0);
-		strokeWeight(1);
-		var skewValue = 0;
-		for (var i = 0; i < segs.length; i++) {
-			var seg = segs[i];
-			line(seg.p1.x + seg.p1.y * skewValue, seg.p1.y+seg.p1.x * skewValue, seg.p2.x + seg.p2.y * skewValue, seg.p2.y+seg.p2.x * skewValue);
-		}
-        stroke(0,0,255);
-        for(let i = 0; i < interiorSegs.length; i++){
-            var seg = interiorSegs[i];
-            line(seg.p1.x,seg.p1.y,seg.p2.x,seg.p2.y);
-        }
-        
-        console.log(interiorSegs.length);
-
-	}
-    //save("test.svg");
-
 }
 
 function drawCells(){
