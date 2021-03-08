@@ -16,12 +16,14 @@ h1{
 
 .container{
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .option{
 	border: none;
 	width: 30%; 
+    margin: 1em;
 }
 
 .option:hover{

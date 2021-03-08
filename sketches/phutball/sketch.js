@@ -24,7 +24,7 @@ function draw(){
     if(t == 0){
         randomPlayer(board, true)
     }else{
-        randomPlayer3(board, false)
+        randomPlayer(board, false)
     }
     t = (t+1)%2
     drawBoard(board,l)
@@ -51,8 +51,8 @@ function checkGameOver(board){
 
 function randomPlayer(board, top){
     let p = getBallPos(board)
-    let row = p.y + floor(random(0,4)) * (top?-1:1)
-    let col = p.x + floor(random(-3,4))
+    let row = p.y + floor(random(0,7)) * (top?-1:1)
+    let col = p.x + floor(random(-5,6))
     if(random(1)<.5){
         longestJump(board,p.y,p.x, top)
     }else{
