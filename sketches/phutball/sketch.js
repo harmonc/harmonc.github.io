@@ -2,7 +2,7 @@ let board, l
 let win = [0,0]
 var t = 0
 function setup(){
-    createCanvas(innerWidth,innerHeight)
+    createCanvas(window.innerWidth,window.innerHeight)
     background(245)
 
 
