@@ -1,5 +1,6 @@
 let board, l
 let win = [0,0]
+var t = 0
 function setup(){
     createCanvas(innerWidth,innerHeight)
     background(245)
@@ -20,8 +21,12 @@ function setup(){
 }
 
 function draw(){
-    randomPlayer(board)
-    
+    if(t == 0){
+        randomPlayer(board, true)
+    }else{
+        randomPlayer3(board, false)
+    }
+    t = (t+1)%2
     drawBoard(board,l)
     checkGameOver(board)
 }
@@ -40,16 +45,42 @@ function checkGameOver(board){
             }
         }
         board[floor(board.length/2)][floor(board[0].length/2)] = 1
-        console.log('win:'+win[0]+'-'+win[1])
+        console.log('P1:'+win[0]+', P2:'+win[1] + ", P1 Win %:" + win[0]/(win[0]+win[1]))
     }
 }
 
-function randomPlayer(board){
+function randomPlayer(board, top){
     let p = getBallPos(board)
-    let row = p.y + floor(random(-3,4))
+    let row = p.y + floor(random(0,4)) * (top?-1:1)
     let col = p.x + floor(random(-3,4))
     if(random(1)<.5){
-        longestJump(board,p.y,p.x)
+        longestJump(board,p.y,p.x, top)
+    }else{
+        if(inBounds(board,col,row) && board[row][col] == 0){
+            board[row][col] = 2
+        }
+    }
+}
+
+function randomPlayer2(board, top){
+    let p = getBallPos(board)
+    let row = p.y + 1 * (top?-1:1)
+    let col = p.x
+    if(random(1)<.5){
+        longestJump(board,p.y,p.x, top)
+    }else{
+        if(inBounds(board,col,row) && board[row][col] == 0){
+            board[row][col] = 2
+        }
+    }
+}
+
+function randomPlayer3(board, top){
+    let p = getBallPos(board)
+    let row = p.y + 1 * (top?-1:1)
+    let col = p.x + floor(random(-1,2))
+    if(random(1)<.5){
+        longestJump(board,p.y,p.x, top)
     }else{
         if(inBounds(board,col,row) && board[row][col] == 0){
             board[row][col] = 2
@@ -69,8 +100,14 @@ function getBallPos(board){
     return result
 }
 
-function longestJump(board, row, col){
-    let dir = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]]
+function longestJump(board, row, col, top){
+    let s
+    if(top){
+        s = -1
+    }else{
+        s = 1
+    }
+    let dir = [[1,0],[1,1*s],[0,1*s],[-1,1*s],[-1,0]]
     let spots = []
     let ds = []
     for(let i = 0; i < dir.length; i++){
