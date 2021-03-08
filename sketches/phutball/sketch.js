@@ -16,7 +16,7 @@ function setup(){
     }
     board[9][9] = 1
 
-    l = min(canvas.width/19.0,canvas.height/19.0)
+    l = min(width/19.0,height/19.0)
   
 }
 
