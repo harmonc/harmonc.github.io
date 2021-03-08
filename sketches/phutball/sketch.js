@@ -1,4 +1,5 @@
 let board, l
+let win = [0,0]
 function setup(){
     createCanvas(innerWidth,innerHeight)
     background(245)
@@ -13,32 +14,62 @@ function setup(){
         board.push(row)
     }
     board[9][9] = 1
-    board[10][9] = 2
 
     l = min(canvas.width/19.0,canvas.height/19.0)
   
-    drawBoard(board, l)
-
 }
 
 function draw(){
-    background(245)
-    drawBoard(board,l)
     randomPlayer(board)
+    
+    drawBoard(board,l)
+    checkGameOver(board)
 }
 
-function randomPlayer(board){
-    let row = floor(random(board.length))
-    let col = floor(random(board[0].length))
-    if(board[row][col] == 0){
-        board[row][col] = 2
-    }else if(board[row][col] == 1){
-        longestJump(board,row,col)
+function checkGameOver(board){
+    let p = getBallPos(board)
+    if(p.y <= 1 || p.y >= board.length - 2){
+        if(p.y <= 1){
+            win[0]++
+        }else{
+            win[1]++
+        }
+        for(let i = 0; i < board.length; i++){
+            for(let j = 0; j < board[0].length; j++){
+                board[i][j] = 0
+            }
+        }
+        board[floor(board.length/2)][floor(board[0].length/2)] = 1
+        console.log('win:'+win[0]+'-'+win[1])
     }
 }
 
+function randomPlayer(board){
+    let p = getBallPos(board)
+    let row = p.y + floor(random(-3,4))
+    let col = p.x + floor(random(-3,4))
+    if(random(1)<.5){
+        longestJump(board,p.y,p.x)
+    }else{
+        if(inBounds(board,col,row) && board[row][col] == 0){
+            board[row][col] = 2
+        }
+    }
+}
+
+function getBallPos(board){
+    var result = createVector(-1,-1)
+    for(let i = 0; i < board.length; i++){
+        for(let j = 0; j < board[0].length; j++){
+            if(board[i][j] == 1){
+                result = createVector(j,i)
+            }
+        }
+    }
+    return result
+}
+
 function longestJump(board, row, col){
-    console.log(board)
     let dir = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]]
     let spots = []
     let ds = []
@@ -49,11 +80,9 @@ function longestJump(board, row, col){
             ds.push(dir[i])
         }
     }
-    console.log('spots')
-    console.log(spots)
+
     let max, maxDir, d
     if(spots.length > 0){
-        console.log("hi")
         max = spots[0]
         maxDir = ds[0]
         d = dist(max[0],max[1],col,row)
@@ -65,30 +94,29 @@ function longestJump(board, row, col){
                 maxDir = ds[i]
             }
         }
+        let r = row
+        let c = col
+        while(r != max[1] || c != max[0]){
+            board[r][c] = 0
+            r += maxDir[1]
+            c += maxDir[0]
+        }
+        board[max[1]][max[0]] = 1
     }
-    while(row != max[0]){
-        board[row][col] = 0
-        row += maxDir[0]
-        col += maxDir[1]
-    }
-    board[max[1]][max[0]] = 1
+
 }
 
 function jumpDir(board, x, y, dx, dy,count){
     let pX = x + dx
     let pY = y + dy
     if(!inBounds(board,pX,pY)){
-        console.log('out of bounds')
         return [-1,-1]
     }
     else if(board[pY][pX] == 0 && count == 0){
-        console.log('nothing to jump')
         return [-1,-1]
     }else if(board[pY][pX] == 2){
-        console.log('jump')
         return jumpDir(board,pX,pY, dx, dy, count + 1)
     }else{
-        console.log('landed')
         return [pX, pY]
     }
 }
@@ -98,6 +126,8 @@ function inBounds(board, x, y){
 }
 
 function drawBoard(board, l){
+    background(245)
+    push()
     translate(canvas.width/2.0, canvas.height/2.0)
     strokeWeight(2)
     stroke(150)
@@ -118,4 +148,5 @@ function drawBoard(board, l){
             }
         }
     }
+    pop()
 }
