@@ -165,7 +165,7 @@ function inBounds(board, x, y){
 function drawBoard(board, l){
     background(245)
     push()
-    translate(canvas.width/2.0, canvas.height/2.0)
+    translate(width/2.0, height/2.0)
     strokeWeight(2)
     stroke(150)
     for(let i = -9; i<= 9; i++){
