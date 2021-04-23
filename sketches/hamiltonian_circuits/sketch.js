@@ -1,5 +1,5 @@
 var board = [];
-var GRID_SIZE = 10;
+var GRID_SIZE = 50;
 var SQUARE_SIZE = 10;
 var active_cells = [];
 var inactive_cells = [];
@@ -27,9 +27,9 @@ function setup() {
 	createCanvas(window.innerWidth, window.innerHeight, SVG);
 
     var textResult = []
-    for(let n = 0; n < 10; n++){
+    for(let n = 0; n < 1; n++){
         board = [];
-        GRID_SIZE = 10;
+        GRID_SIZE = 50;
         SQUARE_SIZE = 10;
         active_cells = [];
         inactive_cells = [];
@@ -124,7 +124,7 @@ function setup() {
         }
         //save("test.svg");
     }
-     save(textResult,"result.txt")
+     //save(textResult,"result.txt")
 }
 
 
