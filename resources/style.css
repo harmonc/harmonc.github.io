@@ -6,8 +6,10 @@
 }
 
 
-body{
+
+body, h1{
     background: var(--main-color);
+    font: 2em "Arial";
     color: var(--text-color);
 }
 
