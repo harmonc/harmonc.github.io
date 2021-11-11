@@ -26,7 +26,7 @@ function generate() {
     fill(135, 206, 235)
     noStroke()
     rect(0, 0, (1000)*M, (1000 - 100)*M)
-    stem(1000/2*M, (1000-50)*M, -PI/2.0, (1000/10)*M, 30, 0.1, gene)
+    stem(1000/2*M, (1000-50)*M, -PI/2.0, (1000/10), 30, 0.1, gene)
 }
 
 function stem(x, y, a, l, d, c, gene) {
