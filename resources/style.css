@@ -1,17 +1,22 @@
+html{
+	background-color: #211C1F;
+}
+
 body {
-	margin-right: 15%;
-	margin-left : 15%;
+	/* margin-right: 15%;
+	margin-left : 15%; */
 	background-color: #CAFAFE;
+	overflow: hidden;
+	margin: 0px;
 }
 
 p{
 	font-family: 'Open Sans', sans-serif;
 }
 
-
-
-h1{
-	font-family: 'Roboto Slab', serif;
+canvas{
+	overflow: hidden;
+	position: absolute;
 }
 
 .container{
