@@ -201,7 +201,7 @@ h1:hover {
 
 /* Hero Section */
 .hero {
-    min-height: 120vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
