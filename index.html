@@ -1,94 +1,293 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="resources/style.css" />
-	<title>Caleb Harmon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caleb Harmon - Data Engineer</title>
+    <meta name="description" content="Caleb Harmon - Professional Data Engineer specializing in Python, PySpark, SQL, Databricks, Azure Cloud Platform, and ETL processes.">
+    <meta name="keywords" content="data engineer, python, pyspark, sql, databricks, azure, terraform, etl, caleb harmon">
+    <meta name="author" content="Caleb Harmon">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harmonc.github.io/">
+    <meta property="og:title" content="Caleb Harmon - Data Engineer">
+    <meta property="og:description" content="Professional Data Engineer specializing in big data technologies and cloud platforms.">
+    <meta property="og:image" content="https://harmonc.github.io/images/profile.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://harmonc.github.io/">
+    <meta property="twitter:title" content="Caleb Harmon - Data Engineer">
+    <meta property="twitter:description" content="Professional Data Engineer specializing in big data technologies and cloud platforms.">
+    <meta property="twitter:image" content="https://harmonc.github.io/images/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Caleb Harmon",
+        "jobTitle": "Data Engineer",
+        "description": "Professional Data Engineer specializing in Python, PySpark, SQL, Databricks, and Azure Cloud Platform",
+        "url": "https://harmonc.github.io",
+        "sameAs": [
+            "https://www.linkedin.com/in/calebmharmon/",
+            "https://github.com/harmonc",
+            "https://harmonc.github.io/blog.html"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        },
+        "knowsAbout": [
+            "Python",
+            "PySpark",
+            "SQL",
+            "Databricks",
+            "Azure Cloud Platform",
+            "Terraform",
+            "ETL Processes",
+            "Data Engineering"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Ouachita Baptist University"
+        }
+    }
+    </script>
 </head>
-
-
 <body>
-	<h1>Caleb Harmon</h1>
-	<a href="https://github.com/harmonc">GitHub</a>
-	<h4>Computer Science and Applied Mathematics student at Ouachita Baptist University</h4>
-    
-    <div class = "container">
-        <div class = "option">
-            <a href = "sketches/phutball/index.html" class = "tag">
-				<img src = "resources/graphics/phutball.png">
-				<div class="label">
-					Phutball Artificial Intelligence
-				</div>
-			</a>
+    <div id="scroll-progress"></div>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>Caleb Harmon</h1>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Caleb Harmon</h1>
+            <h2 id="typing-text">Data Engineer</h2>
+            <p>Transforming data into insights, one pipeline at a time.</p>
+            <a href="#about" class="btn hero-btn">Learn More</a>
         </div>
-        
-        <div class = "option">
-            <a href = "sketches/flowers/index.html" class = "tag">
-				<img src = "resources/graphics/flowers.png">
-				<div class="label">
-					Genetic Flowers
-				</div>
-			</a>
+        <div class="hero-bg">
+            <div class="floating-shapes">
+                <div class="floating-shape shape1"></div>
+                <div class="floating-shape shape2"></div>
+                <div class="floating-shape shape3"></div>
+            </div>
         </div>
-        
-        <div class = "option">
-			<a href = "sketches/oranges/index.html" class = "tag">
-				<img src = "resources/graphics/oranges.png">
-				<div class="label">
-					Generative Oranges
-				</div>
-			</a>
-		</div>
-    
-		<div class = "option">
-			<a href = "sketches/spin_game/index.html" class = "tag">
-				<img src = "resources/graphics/spingame.png">
-				<div class="label">
-					Spin Game
-				</div>
-			</a>
-		</div>
+    </section>
 
-		<div class = "option">
-			<a href = "sketches/squids/index.html" class = "tag">
-				<img src = "resources/graphics/squid.png">
-				<div class="label">
-					Generative Squids
-				</div>
-			</a>
-		</div>
-            
-		<div class = "option">
-			<a href = "sketches/hamiltonian_circuits/index.html" class = "tag">
-				<img src = "resources/graphics/hcycle.png">
-				<div class="label">
-					Hamiltonian Circuit
-				</div>
-			</a>
-		</div>
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Hello! I'm Caleb Harmon, a dedicated data engineer with a passion for building efficient data pipelines and optimizing data infrastructure. With a background in computer science and applied mathematics from Ouachita Baptist University, I bring both technical expertise and analytical thinking to every project.</p>
+                <p>Currently working as a Data Engineer at Advantage Solutions, I specialize in developing scalable data solutions using technologies like Python, PySpark, SQL, Databricks, and Azure Cloud Platform. I enjoy mentoring team members, debugging complex queries, and implementing CI/CD processes to streamline development workflows.</p>
+            </div>
+        </section>
 
-		<div class = "option">
-			<a href = "sketches/cellular_automata_1d/index.html" class = "tag">
-				<img src = "resources/graphics/rule73.png">
-				<div class="label">
-					Cellular Automata
-				</div>
-			</a>
-		</div>
+        <section id="skills" class="section">
+            <div class="container">
+                <h2><i class="fas fa-tools"></i> Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <ul>
+                            <li><i class="fab fa-python"></i> Python</li>
+                            <li><i class="fas fa-database"></i> SQL</li>
+                            <li><i class="fab fa-java"></i> Java</li>
+                            <li><i class="fab fa-js-square"></i> JavaScript</li>
+                            <li><i class="fab fa-csharp"></i> C#</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> Data Tools & Frameworks</h3>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> PySpark</li>
+                            <li><i class="fas fa-database"></i> Databricks</li>
+                            <li><i class="fas fa-code-branch"></i> Git</li>
+                            <li><i class="fas fa-server"></i> .NET Framework</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud Platforms</h3>
+                        <ul>
+                            <li><i class="fab fa-microsoft"></i> Azure Cloud Platform</li>
+                            <li><i class="fas fa-infrastructure"></i> Terraform</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-briefcase"></i> Experience Areas</h3>
+                        <ul>
+                            <li><i class="fas fa-stream"></i> Data Pipelines</li>
+                            <li><i class="fas fa-cogs"></i> ETL Processes</li>
+                            <li><i class="fas fa-users"></i> Team Mentoring</li>
+                            <li><i class="fas fa-bug"></i> SQL Debugging</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<div class = "option">
-			<a href = "sketches/simulated_annealing/index.html" class = "tag">
-				<img src = "resources/graphics/tsp.png">
-				<div class="label">
-					Travelling Salesperson - Simulated Annealing
-				</div>
-			</a>
-		</div>
-	</div>
+        <section id="experience" class="section">
+            <div class="container">
+                <h2><i class="fas fa-briefcase"></i> Career Experience</h2>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-logo">
+                                <img src="images/advantagesolutions.jpeg" alt="Advantage Solutions Logo">
+                            </div>
+                            <div class="experience-info">
+                                <h3>Data Engineer</h3>
+                                <span class="experience-company">Advantage Solutions, Remote</span>
+                                <span class="experience-dates">November 2022 - Present</span>
+                            </div>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Develop data pipelines and optimize runtimes to be more efficient</li>
+                            <li>Develop infrastructure to allow data ingestion into the Databricks platform and speed up development time with CI/CD processes</li>
+                            <li>Work with Databricks to create data pipelines using Medallion Architecture</li>
+                            <li>Debug complex SQL queries and relationships to fix reporting problems</li>
+                            <li>Train and mentor four new team members on the team's codebase and processes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-logo">
+                                <img src="images/advantagesolutions.jpeg" alt="Advantage Solutions Logo">
+                            </div>
+                            <div class="experience-info">
+                                <h3>Software Engineer I</h3>
+                                <span class="experience-company">Advantage Solutions</span>
+                                <span class="experience-dates">July 2021 - November 2022</span>
+                            </div>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Built a new system to retrieve data from Walmart's Scintilla API system</li>
+                            <li>Developed a deep understanding of Walmart's Retail Link and DSS to automate ETL processes for reporting</li>
+                            <li>Maintained legacy codebase in C# and .Net related to ETL of retail data</li>
+                            <li>Built webscrape processes using Python and Selenium</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="experience-logo">
+                                <img src="images/jbhunt.png" alt="J.B. Hunt Logo">
+                            </div>
+                            <div class="experience-info">
+                                <h3>Application Development Intern</h3>
+                                <span class="experience-company">J.B. Hunt Transport Services, Inc, Fayetteville, Arkansas</span>
+                                <span class="experience-dates">June 2019 - August 2019</span>
+                            </div>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Developed email automation software in Spring Boot with Java as well as implementing integration and unit testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="projects" class="section">
+            <div class="container">
+                <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <i class="fas fa-cogs project-icon"></i>
+                        <h3>Data Pipeline Development</h3>
+                        <p>Developed and optimized data pipelines using Databricks and Medallion Architecture at Advantage Solutions. Implemented CI/CD processes to accelerate development time and improve data ingestion efficiency.</p>
+                        <div class="project-tech">Python • PySpark • Databricks • Azure • Terraform</div>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-chart-bar project-icon"></i>
+                        <h3>Walmart API Integration</h3>
+                        <p>Built a comprehensive system to retrieve data from Walmart's Scintilla API, Retail Link, and DSS platforms. Automated ETL processes for retail data reporting and maintained legacy C#/.NET codebase.</p>
+                        <div class="project-tech">C# • .NET • Python • Selenium • APIs</div>
+                    </div>
+                    <div class="project-card">
+                        <i class="fas fa-envelope project-icon"></i>
+                        <h3>Email Automation System</h3>
+                        <p>Developed email automation software during internship at J.B. Hunt Transport Services using Spring Boot and Java. Implemented comprehensive integration and unit testing for reliable system performance.</p>
+                        <div class="project-tech">Java • Spring Boot • Unit Testing • Integration Testing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="education-item">
+                    <h3>BS in Computer Science and Applied Mathematics</h3>
+                    <p class="education-school">Ouachita Baptist University, Arkadelphia, Arkansas</p>
+                    <p class="education-dates">August 2017 - May 2021</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+                <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> (469) 927-7220</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:calebmharmon@gmail.com">calebmharmon@gmail.com</a></p>
+                    <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/calebmharmon/" target="_blank">linkedin.com/in/calebmharmon</a></p>
+                    <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="https://github.com/harmonc" target="_blank">github.com/harmonc</a></p>
+                    <p><i class="fas fa-file-pdf"></i> <strong>Resume:</strong> <a href="resume/Caleb Harmon - Resume.pdf" download>Download PDF</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Caleb Harmon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
 </body>
-
 </html>
