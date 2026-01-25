@@ -10,6 +10,10 @@ html {
     --link-color: #667eea;
     --btn-bg: linear-gradient(45deg, #667eea, #764ba2);
     --btn-hover: linear-gradient(45deg, #764ba2, #667eea);
+    --glass-bg-05: rgba(255, 255, 255, 0.05);
+    --glass-bg-10: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] {
@@ -21,6 +25,10 @@ html {
     --link-color: #3498db;
     --btn-bg: linear-gradient(45deg, #3498db, #2980b9);
     --btn-hover: linear-gradient(45deg, #2980b9, #3498db);
+    --glass-bg-05: rgba(44, 62, 80, 0.05);
+    --glass-bg-10: rgba(44, 62, 80, 0.1);
+    --glass-border: rgba(44, 62, 80, 0.1);
+    --glass-shadow: rgba(44, 62, 80, 0.1);
 }
 
 * {
@@ -845,9 +853,11 @@ footer {
 
 .review-hero-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
     align-items: start;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .review-breadcrumb {
@@ -888,11 +898,22 @@ footer {
 }
 
 .review-date, .review-genre, .review-platform {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-bg-10);
+    padding: 0.75rem 1.25rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.review-date:hover, .review-genre:hover, .review-platform:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .review-rating-hero {
@@ -916,25 +937,6 @@ footer {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent-color);
-}
-
-.review-box-art {
-    position: sticky;
-    top: 120px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.review-box-art:hover {
-    transform: scale(1.05);
-}
-
-.review-box-art img {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 /* Game Info Section */
@@ -1160,20 +1162,13 @@ footer {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.review-main-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    width: 100%;
-}
-
 .review-section {
-    margin: 0 0 3rem 0;
-    background: rgba(255, 255, 255, 0.05);
+    margin: 0 0 3rem;
+    background: var(--glass-bg-05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
     width: 100%;
     max-width: none;
     position: relative;
@@ -1793,11 +1788,6 @@ footer {
 
     .tech-grid {
         grid-template-columns: 1fr;
-    }
-
-    .review-box-art {
-        position: relative;
-        top: 0;
     }
 
     .filter-buttons {
