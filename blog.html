@@ -76,6 +76,19 @@
 
         <section id="blog-posts" class="section">
             <div class="container">
+                <!-- Blog Filter Section -->
+                <div class="blog-filters">
+                    <div class="search-container">
+                        <input type="text" id="blog-search" placeholder="Search posts..." class="blog-search">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Posts</button>
+                        <button class="filter-btn" data-filter="coding">Coding Projects</button>
+                        <button class="filter-btn" data-filter="reviews">Game Reviews</button>
+                    </div>
+                </div>
+
                 <div class="blog-grid">
                     <!-- Coding Projects -->
                     <div class="blog-category">
@@ -115,23 +128,23 @@
                     <div class="blog-category">
                         <h3><i class="fas fa-gamepad"></i> Video Game Reviews</h3>
                         <div class="blog-posts-list">
-                            <!-- <article class="blog-post">
+                            <article class="blog-post">
                                 <div class="blog-post-header">
-                                    <h4>The Legend of Zelda: Tears of the Kingdom</h4>
-                                    <span class="blog-date">January 5, 2026</span>
+                                    <h4>MIO: Memories In Orbit</h4>
+                                    <span class="blog-date">January 24, 2026</span>
                                 </div>
-                                <p>An incredible open-world adventure that builds upon Breath of the Wild's foundation. The physics-based puzzles and exploration freedom are unparalleled.</p>
+                                <p>Metroidvania</p>
                                 <div class="blog-rating">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star-half-alt"></i>
-                                    <span class="rating-text">4.5/5</span>
+                                    <span class="rating-text">8/10</span>
                                 </div>
-                                <a href="#" class="blog-read-more">Read Full Review →</a>
+                                <a href="reviews/dynamic-review.html?mio" class="blog-read-more">Read Full Review →</a>
                             </article>
-
+                            <!-- 
                             <article class="blog-post">
                                 <div class="blog-post-header">
                                     <h4>Cyberpunk 2077: Phantom Liberty</h4>

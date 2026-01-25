@@ -1,0 +1,103 @@
+{
+  "reviews": [
+    {
+      "id": "mio",
+      "title": "MIO: Memories In Orbit",
+      "reviewDate": "January 24, 2026",
+      "genre": "Metroidvania",
+      "platform": "PC",
+      "rating": 8,
+      "ratingText": "8/10",
+      "ratingStars": [
+        "<i class=\"fas fa-star\"></i>",
+        "<i class=\"fas fa-star\"></i>",
+        "<i class=\"fas fa-star\"></i>",
+        "<i class=\"fas fa-star\"></i>",
+        "<i class=\"fas fa-star-half-alt\"></i>"
+      ],
+      "tags": [
+        {
+          "name": "Metroidvania",
+          "class": "tag"
+        },
+        {
+          "name": "Indie",
+          "class": "tag"
+        },
+        {
+          "name": "Adventure",
+          "class": "tag"
+        },
+        {
+          "name": "Exploration",
+          "class": "tag"
+        }
+      ],
+      "backgroundImage": "mio-title.png",
+      "boxArt": "box-art.jpg",
+      "developer": "Chanko Studio",
+      "publisher": "Chanko Studio",
+      "releaseDate": "November 2024",
+      "platforms": "PC, Switch, PS4/5, Xbox",
+      "genres": "Metroidvania, Adventure",
+      "playTime": "8-12 hours",
+      "quickVerdict": "A beautiful metroidvania with stunning art design and solid exploration mechanics, though it doesn't break new ground in the genre.",
+      "recommendation": {
+        "icon": "fa-thumbs-up",
+        "text": "Recommended for metroidvania fans"
+      },
+      "reviewContent": [
+        "MIO: Memories In Orbit is a charming metroidvania that brings players to a beautifully crafted space station filled with mystery and discovery. As the titular character MIO, you'll explore interconnected areas, unlock new abilities, and piece together the story of what happened to the station's inhabitants.",
+        "The game immediately impresses with its gorgeous hand-drawn art style. Every frame is filled with meticulous detail, from the cosmic backgrounds to the character animations. The color palette shifts beautifully between different areas of the space station, creating a strong sense of place and atmosphere that few indie games manage to achieve.",
+        "Gameplay follows the classic metroidvania formula: you start with basic movement abilities and gradually unlock new skills like double jumps, wall climbing, and special attacks that allow access to previously unreachable areas. The exploration feels rewarding, with secrets tucked away in every corner and a satisfying sense of progression as you piece together the station's layout.",
+        "Combat is serviceable but not particularly deep. You have a basic attack combo and special abilities that you unlock throughout the game. Enemy variety is decent, though you'll find yourself using similar strategies for most encounters. The boss fights are highlights, offering challenging but fair encounters that test your mastery of the game's mechanics.",
+        "Where MIO truly shines is in its environmental storytelling and atmosphere. The space station feels lived-in and abandoned, with small details telling the story of what happened here. The narrative unfolds through environmental clues and occasional text logs, creating a sense of mystery that keeps you engaged throughout your journey."
+      ],
+      "pros": [
+        "Stunning hand-drawn art style and animations",
+        "Excellent atmosphere and environmental storytelling",
+        "Solid exploration and map design",
+        "Challenging but fair boss fights",
+        "Beautiful soundtrack that enhances the space setting",
+        "Good length for the price point"
+      ],
+      "cons": [
+        "Combat system lacks depth",
+        "Some abilities feel familiar from other metroidvanias",
+        "Occasional backtracking can feel tedious",
+        "Limited enemy variety in later areas",
+        "Story could be more fleshed out"
+      ],
+      "technicalDetails": {
+        "graphics": {
+          "label": "Graphics:",
+          "value": "9/10 - Beautiful hand-drawn art"
+        },
+        "sound": {
+          "label": "Sound:",
+          "value": "8/10 - Excellent atmospheric soundtrack"
+        },
+        "gameplay": {
+          "label": "Gameplay:",
+          "value": "7/10 - Solid but familiar mechanics"
+        },
+        "story": {
+          "label": "Story:",
+          "value": "7/10 - Good environmental storytelling"
+        },
+        "performance": {
+          "label": "Performance:",
+          "value": "Excellent - Solid 60 FPS, no bugs"
+        },
+        "ageRating": {
+          "label": "Age Rating:",
+          "value": "E for Everyone"
+        }
+      },
+      "finalVerdict": "MIO: Memories In Orbit is a beautiful and well-crafted metroidvania that delivers a satisfying exploration experience wrapped in stunning art design. While it may not revolutionize the genre, it executes the familiar formula with polish and heart, creating an adventure that's well worth your time. The game's greatest strength is its atmosphere and visual presentation, which create an immersive space station environment that's a joy to explore. The solid mechanics and thoughtful level design keep the gameplay engaging throughout, even if the combat lacks the depth of genre heavyweights like Hollow Knight. For fans of metroidvanias and indie games with strong artistic vision, MIO: Memories In Orbit comes highly recommended. It's a testament to how beautiful art design and solid mechanics can create a memorable gaming experience, even without groundbreaking innovation.",
+      "screenshots": [],
+      "purchaseLinks": [],
+      "relatedReviews": []
+    }
+  ]
+}

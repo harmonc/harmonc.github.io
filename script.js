@@ -172,3 +172,131 @@ document.querySelectorAll('.project-card').forEach((card, index) => {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
 });
+
+// Review Page Enhancements
+document.addEventListener('DOMContentLoaded', function() {
+    // Gallery lightbox functionality (only if gallery elements exist)
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    if (galleryImages.length > 0) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = '<div class="lightbox-content"><img src="" alt=""><button class="lightbox-close">&times;</button></div>';
+        document.body.appendChild(lightbox);
+
+        galleryImages.forEach(image => {
+            image.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-full');
+                lightbox.querySelector('img').src = imgSrc;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+    }
+
+    // Social share functionality
+    const shareLinks = document.querySelectorAll('.share-link');
+    if (shareLinks.length > 0) {
+        const reviewUrl = window.location.href;
+        const reviewTitle = document.querySelector('title').textContent;
+
+        shareLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.classList[1];
+                let shareUrl = '';
+
+                switch(platform) {
+                    case 'twitter':
+                        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(reviewTitle)}&url=${encodeURIComponent(reviewUrl)}`;
+                        break;
+                    case 'facebook':
+                        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(reviewUrl)}`;
+                        break;
+                    case 'reddit':
+                        shareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(reviewUrl)}&title=${encodeURIComponent(reviewTitle)}`;
+                        break;
+                }
+
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            });
+        });
+    }
+
+    // Blog page filtering and search
+    const blogSearch = document.getElementById('blog-search');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+
+    if (blogSearch && blogPosts.length > 0) {
+        // Search functionality
+        blogSearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            filterBlogPosts(searchTerm, getCurrentFilter());
+        });
+    }
+
+    if (filterButtons.length > 0 && blogPosts.length > 0) {
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter posts
+                const filter = this.getAttribute('data-filter');
+                filterBlogPosts('', filter);
+            });
+        });
+    }
+
+    function getCurrentFilter() {
+        const activeButton = document.querySelector('.filter-btn.active');
+        return activeButton ? activeButton.getAttribute('data-filter') : 'all';
+    }
+
+    function filterBlogPosts(searchTerm = '', filter = 'all') {
+        blogPosts.forEach(post => {
+            const title = post.querySelector('h4')?.textContent.toLowerCase() || '';
+            const content = post.querySelector('p')?.textContent.toLowerCase() || '';
+            const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+            
+            const matchesSearch = !searchTerm || 
+                title.includes(searchTerm) || 
+                content.includes(searchTerm) || 
+                tags.includes(searchTerm);
+            
+            let matchesFilter = true;
+            if (filter !== 'all') {
+                const category = post.closest('.blog-category');
+                if (filter === 'coding' && category) {
+                    matchesFilter = category.textContent.toLowerCase().includes('coding');
+                } else if (filter === 'reviews' && category) {
+                    matchesFilter = category.textContent.toLowerCase().includes('video game') || category.textContent.toLowerCase().includes('review');
+                }
+            }
+            
+            post.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+        });
+    }
+});
+
+// Enhanced blog card hover effects
+document.addEventListener('DOMContentLoaded', function() {
+    const blogPosts = document.querySelectorAll('.blog-post');
+    
+    blogPosts.forEach(post => {
+        post.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+        });
+        
+        post.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        });
+    });
+});

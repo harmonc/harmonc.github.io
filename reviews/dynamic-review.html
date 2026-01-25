@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME_TITLE Review - Caleb Harmon</title>
+    <meta name="description" content="REVIEW_DESCRIPTION">
+    <meta name="keywords" content="game review, GAME_TITLE, GENRE, PLATFORM, video game review">
+    <meta name="author" content="Caleb Harmon">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://harmonc.github.io/reviews/REVIEW_FILE.html">
+    <meta property="og:title" content="GAME_TITLE Review - Caleb Harmon">
+    <meta property="og:description" content="REVIEW_DESCRIPTION">
+    <meta property="og:image" content="https://harmonc.github.io/images/reviews/REVIEW_DIR/box-art.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {
+            "@type": "VideoGame",
+            "name": "GAME_TITLE",
+            "description": "GAME_DESCRIPTION",
+            "genre": ["GENRE"],
+            "platform": ["PLATFORM"],
+            "datePublished": "RELEASE_DATE"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Caleb Harmon"
+        },
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "RATING_NUMBER",
+            "bestRating": "10"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Caleb Harmon"
+        },
+        "datePublished": "REVIEW_DATE"
+    }
+    </script>
+</head>
+<body class="reviews-page review-page">
+    <div id="scroll-progress"></div>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1><a href="../index.html" style="color: inherit; text-decoration: none;">Caleb Harmon</a></h1>
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#education">Education</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li><a href="../blog.html" class="active">Blog</a></li>
+                </ul>
+                <div class="nav-controls">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="review-app">
+        <!-- Loading State -->
+        <div id="loading" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Loading review...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error-state" style="display: none;">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2>Review Not Found</h2>
+            <p>The requested review could not be loaded. Please check the URL and try again.</p>
+            <a href="../blog.html" class="back-to-blog">← Back to Blog</a>
+        </div>
+
+        <!-- Review Content (Dynamically Populated) -->
+        <div id="review-content-dynamic" style="display: none;">
+            <!-- Review Hero Section -->
+            <section id="review-hero" class="section">
+                <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
+                    <div class="review-hero-content">
+                        <div class="review-hero-left">
+                            <div class="review-breadcrumb">
+                                <a href="../blog.html"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                                <span class="breadcrumb-separator">/</span>
+                                <a href="../blog.html#video-game-reviews">Video Game Reviews</a>
+                            </div>
+                            <h1 class="review-title" id="review-title">GAME_TITLE</h1>
+                            <div class="review-meta">
+                                <span class="review-date" id="review-date">REVIEW_DATE</span>
+                                <span class="review-genre" id="review-genre">GENRE</span>
+                                <span class="review-platform" id="review-platform">PLATFORM</span>
+                            </div>
+                            <div class="review-rating-hero">
+                                <div class="rating-stars" id="rating-stars">
+                                    RATING_STARS
+                                </div>
+                                <span class="rating-text" id="rating-text">RATING_TEXT</span>
+                            </div>
+                            <div class="review-tags" id="review-tags">
+                                TAGS
+                            </div>
+                        </div>
+                        <div class="review-hero-right">
+                            <div class="review-box-art">
+                                <img id="box-art" src="../images/reviews/REVIEW_DIR/box-art.jpg" alt="GAME_TITLE Box Art" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Info Section -->
+            <section id="game-info" class="section">
+                <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
+                    <div class="game-info-grid">
+                        <div class="game-info-card">
+                            <h3><i class="fas fa-gamepad"></i> Game Details</h3>
+                            <div class="game-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Developer:</span>
+                                    <span class="detail-value" id="developer">DEVELOPER</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Publisher:</span>
+                                    <span class="detail-value" id="publisher">PUBLISHER</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Release Date:</span>
+                                    <span class="detail-value" id="release-date">RELEASE_DATE</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Platforms:</span>
+                                    <span class="detail-value" id="platforms">PLATFORMS</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Genre:</span>
+                                    <span class="detail-value" id="genres">GENRES</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Play Time:</span>
+                                    <span class="detail-value" id="play-time">PLAY_TIME</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-info-card">
+                            <h3><i class="fas fa-star"></i> Quick Verdict</h3>
+                            <div class="quick-verdict">
+                                <div class="verdict-rating">
+                                    <span class="verdict-score" id="verdict-score">RATING_NUMBER</span>
+                                    <span class="verdict-max">/10</span>
+                                </div>
+                                <p class="verdict-text" id="quick-verdict">QUICK_VERDICT</p>
+                                <div class="verdict-recommendation" id="verdict-recommendation">
+                                    <i class="fas RECOMMENDATION_ICON"></i>
+                                    <span id="recommendation-text">RECOMMENDATION_TEXT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Review Content Section -->
+            <section id="review-content" class="section">
+                <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
+                    <div class="review-main-content" style="margin-right: 5px;">
+                        <div class="review-section">
+                            <div class="section-top-cap"></div>
+                            <h2><i class="fas fa-book-open"></i> Review</h2>
+                            <div class="review-text" id="review-text">
+                                REVIEW_CONTENT
+                            </div>
+                        </div>
+
+                        <!-- Pros and Cons Section -->
+                        <div class="review-section">
+                            <div class="section-top-cap"></div>
+                            <h2><i class="fas fa-balance-scale"></i> Pros & Cons</h2>
+                            <div class="pros-cons-grid">
+                                <div class="pros-section">
+                                    <h3><i class="fas fa-thumbs-up"></i> Pros</h3>
+                                    <ul class="pros-list" id="pros-list">
+                                        PROS_LIST
+                                    </ul>
+                                </div>
+                                <div class="cons-section">
+                                    <h3><i class="fas fa-thumbs-down"></i> Cons</h3>
+                                    <ul class="cons-list" id="cons-list">
+                                        CONS_LIST
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Details Section -->
+                        <div class="review-section">
+                            <div class="section-top-cap"></div>
+                            <h2><i class="fas fa-cog"></i> Technical Details</h2>
+                            <div class="technical-details">
+                                <div class="tech-grid" id="tech-grid">
+                                    TECHNICAL_DETAILS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Verdict Section -->
+            <section id="final-verdict" class="section">
+                <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
+                    <div class="review-main-content" style="margin-right: 5px;">
+                        <div class="verdict-content">
+                            <h2><i class="fas fa-gavel"></i> Final Verdict</h2>
+                            <div class="verdict-summary">
+                                <div class="verdict-rating-large">
+                                    <span class="verdict-score-large" id="final-verdict-score">RATING_NUMBER</span>
+                                    <span class="verdict-max-large">/10</span>
+                                </div>
+                                <div class="verdict-text-large">
+                                    <p id="final-verdict-text">FINAL_VERDICT</p>
+                                    <div class="verdict-recommendation-large" id="final-recommendation">
+                                        <i class="fas RECOMMENDATION_ICON"></i>
+                                        <span id="final-recommendation-text">RECOMMENDATION_TEXT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Caleb Harmon. All rights reserved.</p>
+            <p><a href="../index.html">← Back to Portfolio</a> | <a href="../blog.html">← Back to Blog</a></p>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../script.js"></script>
+    <script>
+        // Embedded configuration to avoid CORS issues
+        const CONFIG_DATA = {
+            "reviews": [
+                {
+                    "id": "mio",
+                    "title": "MIO: Memories In Orbit",
+                    "reviewDate": "January 24, 2026",
+                    "genre": "Metroidvania",
+                    "platform": "PC",
+                    "rating": 8,
+                    "ratingText": "8/10",
+                    "ratingStars": [
+                        "<i class=\"fas fa-star\"></i>",
+                        "<i class=\"fas fa-star\"></i>",
+                        "<i class=\"fas fa-star\"></i>",
+                        "<i class=\"fas fa-star\"></i>",
+                        "<i class=\"fas fa-star-half-alt\"></i>"
+                    ],
+                    "tags": [
+                        {
+                            "name": "Metroidvania",
+                            "class": "tag"
+                        },
+                        {
+                            "name": "Indie",
+                            "class": "tag"
+                        },
+                        {
+                            "name": "Adventure",
+                            "class": "tag"
+                        },
+                        {
+                            "name": "Exploration",
+                            "class": "tag"
+                        }
+                    ],
+                    "backgroundImage": "mio-title.png",
+                    "boxArt": "box-art.jpg",
+                    "developer": "Chanko Studio",
+                    "publisher": "Chanko Studio",
+                    "releaseDate": "November 2024",
+                    "platforms": "PC, Switch, PS4/5, Xbox",
+                    "genres": "Metroidvania, Adventure",
+                    "playTime": "8-12 hours",
+                    "quickVerdict": "A beautiful metroidvania with stunning art design and solid exploration mechanics, though it doesn't break new ground in the genre.",
+                    "recommendation": {
+                        "icon": "fa-thumbs-up",
+                        "text": "Recommended for metroidvania fans"
+                    },
+                    "reviewContent": [
+                        "MIO: Memories In Orbit is a charming metroidvania that brings players to a beautifully crafted space station filled with mystery and discovery. As the titular character MIO, you'll explore interconnected areas, unlock new abilities, and piece together the story of what happened to the station's inhabitants.",
+                        "The game immediately impresses with its gorgeous hand-drawn art style. Every frame is filled with meticulous detail, from the cosmic backgrounds to the character animations. The color palette shifts beautifully between different areas of the space station, creating a strong sense of place and atmosphere that few indie games manage to achieve.",
+                        "Gameplay follows the classic metroidvania formula: you start with basic movement abilities and gradually unlock new skills like double jumps, wall climbing, and special attacks that allow access to previously unreachable areas. The exploration feels rewarding, with secrets tucked away in every corner and a satisfying sense of progression as you piece together the station's layout.",
+                        "Combat is serviceable but not particularly deep. You have a basic attack combo and special abilities that you unlock throughout the game. Enemy variety is decent, though you'll find yourself using similar strategies for most encounters. The boss fights are highlights, offering challenging but fair encounters that test your mastery of the game's mechanics.",
+                        "Where MIO truly shines is in its environmental storytelling and atmosphere. The space station feels lived-in and abandoned, with small details telling the story of what happened here. The narrative unfolds through environmental clues and occasional text logs, creating a sense of mystery that keeps you engaged throughout your journey."
+                    ],
+                    "pros": [
+                        "Stunning hand-drawn art style and animations",
+                        "Excellent atmosphere and environmental storytelling",
+                        "Solid exploration and map design",
+                        "Challenging but fair boss fights",
+                        "Beautiful soundtrack that enhances the space setting",
+                        "Good length for the price point"
+                    ],
+                    "cons": [
+                        "Combat system lacks depth",
+                        "Some abilities feel familiar from other metroidvanias",
+                        "Occasional backtracking can feel tedious",
+                        "Limited enemy variety in later areas",
+                        "Story could be more fleshed out"
+                    ],
+                    "technicalDetails": {
+                        "graphics": {
+                            "label": "Graphics:",
+                            "value": "9/10 - Beautiful hand-drawn art"
+                        },
+                        "sound": {
+                            "label": "Sound:",
+                            "value": "8/10 - Excellent atmospheric soundtrack"
+                        },
+                        "gameplay": {
+                            "label": "Gameplay:",
+                            "value": "7/10 - Solid but familiar mechanics"
+                        },
+                        "story": {
+                            "label": "Story:",
+                            "value": "7/10 - Good environmental storytelling"
+                        },
+                        "performance": {
+                            "label": "Performance:",
+                            "value": "Excellent - Solid 60 FPS, no bugs"
+                        },
+                        "ageRating": {
+                            "label": "Age Rating:",
+                            "value": "E for Everyone"
+                        }
+                    },
+                    "finalVerdict": "MIO: Memories In Orbit is a beautiful and well-crafted metroidvania that delivers a satisfying exploration experience wrapped in stunning art design. While it may not revolutionize the genre, it executes the familiar formula with polish and heart, creating an adventure that's well worth your time. The game's greatest strength is its atmosphere and visual presentation, which create an immersive space station environment that's a joy to explore. The solid mechanics and thoughtful level design keep the gameplay engaging throughout, even if the combat lacks the depth of genre heavyweights like Hollow Knight. For fans of metroidvanias and indie games with strong artistic vision, MIO: Memories In Orbit comes highly recommended. It's a testament to how beautiful art design and solid mechanics can create a memorable gaming experience, even without groundbreaking innovation.",
+                    "screenshots": [],
+                    "purchaseLinks": [],
+                    "relatedReviews": []
+                }
+            ]
+        };
+
+        // Dynamic Review Loader
+        class ReviewLoader {
+            constructor() {
+                this.config = CONFIG_DATA;
+                this.currentReview = null;
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.loadConfig();
+                    this.loadReviewFromUrl();
+                } catch (error) {
+                    this.showError();
+                }
+            }
+
+            async loadConfig() {
+                try {
+                    // Use embedded config to avoid CORS issues
+                    this.config = CONFIG_DATA;
+                    console.log('Using embedded config:', this.config);
+                } catch (error) {
+                    console.error('Error loading config:', error);
+                    throw error;
+                }
+            }
+
+            loadReviewFromUrl() {
+                const path = window.location.pathname;
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                console.log('=== DEBUG INFO ===');
+                console.log('Full URL:', window.location.href);
+                console.log('Path:', path);
+                console.log('Search string:', window.location.search);
+                console.log('URLSearchParams:', urlParams.toString());
+                console.log('All params:');
+                
+                // Log all available parameters
+                for (let [key, value] of urlParams) {
+                    console.log(`  ${key}: ${value}`);
+                }
+                
+                // Try to get ID from URL parameter first
+                let reviewId = urlParams.get('id');
+                console.log('URL params.get("id"):', reviewId);
+                console.log('Has "id" in params:', urlParams.has('id'));
+                console.log('Keys in params:', Array.from(urlParams.keys()));
+                
+                if (!reviewId) {
+                    console.log('No ID in URL params, trying path extraction...');
+                    // Extract from path: /reviews/dynamic-review.html?mio
+                    const pathParts = path.split('/');
+                    const fileName = pathParts[pathParts.length - 1]; // dynamic-review.html
+                    const baseName = fileName.replace('.html', '');
+                    console.log('Base name:', baseName);
+                    
+                    // Handle case where ID is in query parameter after filename
+                    const queryIndex = baseName.indexOf('?');
+                    if (queryIndex !== -1) {
+                        reviewId = baseName.substring(queryIndex + 1); // Get everything after ?
+                        console.log('Extracted from path:', reviewId);
+                    }
+                }
+                
+                console.log('Final review ID to search for:', reviewId);
+                console.log('Available reviews:', this.config.reviews.map(r => r.id));
+                
+                this.currentReview = this.config.reviews.find(r => r.id === reviewId);
+                console.log('Found review:', this.currentReview);
+                
+                if (this.currentReview) {
+                    this.renderReview();
+                    this.updateMetaTags();
+                } else {
+                    console.log('Review not found!');
+                    this.showError();
+                }
+            }
+                }
+                
+                console.log('Looking for review ID:', reviewId);
+                this.currentReview = this.config.reviews.find(r => r.id === reviewId);
+                console.log('Found review:', this.currentReview);
+                
+                if (this.currentReview) {
+                    this.renderReview();
+                    this.updateMetaTags();
+                } else {
+                    console.log('Available review IDs:', this.config ? this.config.reviews.map(r => r.id) : 'Config not loaded');
+                    this.showError();
+                }
+            }
+
+            updateMetaTags() {
+                if (!this.currentReview) return;
+                
+                // Update title
+                document.title = `${this.currentReview.title} Review - Caleb Harmon`;
+                
+                // Update meta description
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc) {
+                    metaDesc.content = `A comprehensive review of ${this.currentReview.title}, a ${this.currentReview.genre} game that combines beautiful art design with engaging exploration mechanics.`;
+                }
+                
+                // Update Open Graph
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                const ogImage = document.querySelector('meta[property="og:image"]');
+                
+                if (ogTitle) ogTitle.content = `${this.currentReview.title} Review - Caleb Harmon`;
+                if (ogDesc) ogDesc.content = ogDesc.content;
+                if (ogImage) ogImage.content = `https://harmonc.github.io/images/reviews/${this.currentReview.id}/box-art.jpg`;
+                
+                // Update structured data
+                const structuredData = document.querySelector('script[type="application/ld+json"]');
+                if (structuredData) {
+                    const data = JSON.parse(structuredData.textContent);
+                    data.itemReviewed.name = this.currentReview.title;
+                    data.itemReviewed.genre = [this.currentReview.genre];
+                    data.itemReviewed.platform = [this.currentReview.platform];
+                    data.reviewRating.ratingValue = this.currentReview.rating;
+                    data.datePublished = this.currentReview.reviewDate;
+                    structuredData.textContent = JSON.stringify(data, null, 2);
+                }
+            }
+
+            renderReview() {
+                if (!this.currentReview) {
+                    console.error('No current review to render');
+                    return;
+                }
+
+                console.log('Starting render of:', this.currentReview.title);
+
+                // Hide loading, show content
+                const loadingEl = document.getElementById('loading');
+                const errorEl = document.getElementById('error');
+                const contentEl = document.getElementById('review-content-dynamic');
+                
+                if (loadingEl) loadingEl.style.display = 'none';
+                if (errorEl) errorEl.style.display = 'none';
+                if (contentEl) contentEl.style.display = 'block';
+
+                // Set background image if exists
+                if (this.currentReview.backgroundImage) {
+                    const heroSection = document.getElementById('review-hero');
+                    if (heroSection) {
+                        heroSection.style.background = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../images/reviews/${this.currentReview.id}/${this.currentReview.backgroundImage}')`;
+                        heroSection.style.backgroundSize = 'cover';
+                        heroSection.style.backgroundPosition = 'center';
+                        heroSection.style.backgroundAttachment = 'fixed';
+                    }
+                }
+
+                // Helper function to safely set text
+                const safeSetText = (id, text) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.textContent = text;
+                        console.log(`Set ${id}:`, text);
+                    } else {
+                        console.warn(`Element not found: ${id}`);
+                    }
+                };
+
+                const safeSetHtml = (id, html) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.innerHTML = html;
+                        console.log(`Set HTML ${id}:`, html);
+                    } else {
+                        console.warn(`Element not found: ${id}`);
+                    }
+                };
+
+                // Populate basic info
+                safeSetText('review-title', this.currentReview.title);
+                safeSetText('review-date', this.currentReview.reviewDate);
+                safeSetText('review-genre', this.currentReview.genre);
+                safeSetText('review-platform', this.currentReview.platform);
+                safeSetText('developer', this.currentReview.developer);
+                safeSetText('publisher', this.currentReview.publisher);
+                safeSetText('release-date', this.currentReview.releaseDate);
+                safeSetText('platforms', this.currentReview.platforms);
+                safeSetText('genres', this.currentReview.genres);
+                safeSetText('play-time', this.currentReview.playTime);
+                safeSetText('quick-verdict', this.currentReview.quickVerdict);
+                safeSetText('final-verdict', this.currentReview.finalVerdict);
+
+                // Populate rating
+                safeSetHtml('rating-stars', this.currentReview.ratingStars.join(''));
+                safeSetText('rating-text', this.currentReview.ratingText);
+                safeSetText('verdict-score', this.currentReview.rating);
+                safeSetText('final-verdict-score', this.currentReview.rating);
+
+                // Populate tags
+                const tagsContainer = document.getElementById('review-tags');
+                if (tagsContainer) {
+                    tagsContainer.innerHTML = this.currentReview.tags.map(tag => 
+                        `<span class="${tag.class}">${tag.name}</span>`
+                    ).join('');
+                }
+
+                // Populate box art
+                const boxArt = document.getElementById('box-art');
+                if (boxArt && this.currentReview.boxArt) {
+                    boxArt.src = `../images/reviews/${this.currentReview.id}/${this.currentReview.boxArt}`;
+                    boxArt.alt = `${this.currentReview.title} Box Art`;
+                }
+
+                // Populate recommendation
+                const recIcon = this.currentReview.recommendation.icon;
+                const recText = this.currentReview.recommendation.text;
+                safeSetHtml('verdict-recommendation', 
+                    `<i class="fas ${recIcon}"></i>
+                     <span>${recText}</span>`
+                );
+                safeSetHtml('final-recommendation', 
+                    `<i class="fas ${recIcon}"></i>
+                     <span>${recText}</span>`
+                );
+
+                // Populate review content
+                const reviewContent = document.getElementById('review-text');
+                if (reviewContent) {
+                    reviewContent.innerHTML = this.currentReview.reviewContent
+                        .map(paragraph => `<p>${paragraph}</p>`)
+                        .join('');
+                }
+
+                // Populate pros and cons
+                const prosList = document.getElementById('pros-list');
+                if (prosList) {
+                    prosList.innerHTML = this.currentReview.pros
+                        .map(pro => `<li>${pro}</li>`)
+                        .join('');
+                }
+
+                const consList = document.getElementById('cons-list');
+                if (consList) {
+                    consList.innerHTML = this.currentReview.cons
+                        .map(con => `<li>${con}</li>`)
+                        .join('');
+                }
+
+                // Populate technical details
+                const techGrid = document.getElementById('tech-grid');
+                if (techGrid) {
+                    const techDetails = this.currentReview.technicalDetails;
+                    techGrid.innerHTML = Object.values(techDetails)
+                        .map(tech => `
+                            <div class="tech-item">
+                                <span class="tech-label">${tech.label}</span>
+                                <span class="tech-value">${tech.value}</span>
+                            </div>
+                        `).join('');
+                }
+
+                console.log('Review render complete');
+            }
+
+            setText(id, text) {
+                const element = document.getElementById(id);
+                if (element) element.textContent = text;
+            }
+
+            setHtml(id, html) {
+                const element = document.getElementById(id);
+                if (element) element.innerHTML = html;
+            }
+
+            showError() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        // Initialize the review loader
+        document.addEventListener('DOMContentLoaded', () => {
+            new ReviewLoader();
+        });
+    </script>
+</body>
+</html>
