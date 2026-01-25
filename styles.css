@@ -10,10 +10,6 @@ html {
     --link-color: #667eea;
     --btn-bg: linear-gradient(45deg, #667eea, #764ba2);
     --btn-hover: linear-gradient(45deg, #764ba2, #667eea);
-    --glass-bg-05: rgba(255, 255, 255, 0.05);
-    --glass-bg-10: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] {
@@ -25,10 +21,6 @@ html {
     --link-color: #3498db;
     --btn-bg: linear-gradient(45deg, #3498db, #2980b9);
     --btn-hover: linear-gradient(45deg, #2980b9, #3498db);
-    --glass-bg-05: rgba(44, 62, 80, 0.05);
-    --glass-bg-10: rgba(44, 62, 80, 0.1);
-    --glass-border: rgba(44, 62, 80, 0.1);
-    --glass-shadow: rgba(44, 62, 80, 0.1);
 }
 
 * {
@@ -833,22 +825,12 @@ footer {
 #review-hero {
     padding: 120px 0 60px 0;
     position: relative;
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-        linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%),
-        url('../images/reviews/mio/mio-title.png');
-    background-size: cover, cover, cover;
-    background-position: center, center, center;
-    background-attachment: fixed, fixed, fixed;
     min-height: 60vh;
 }
 
 /* Review-specific background override for pages in reviews/ directory */
 .reviews-page #review-hero {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-        linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%),
-        url('../images/reviews/mio/mio-title.png');
+    /* Background will be set dynamically by JavaScript */
 }
 
 .review-hero-content {
@@ -898,22 +880,36 @@ footer {
 }
 
 .review-date, .review-genre, .review-platform {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-bg-10);
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     padding: 0.75rem 1.25rem;
     border-radius: 30px;
     font-size: 0.95rem;
     font-weight: 500;
     color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .review-date, .review-genre, .review-platform {
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
 }
 
 .review-date:hover, .review-genre:hover, .review-platform:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.95);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 .review-rating-hero {
@@ -1162,13 +1158,20 @@ footer {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.review-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
 .review-section {
-    margin: 0 0 3rem;
-    background: var(--glass-bg-05);
+    margin: 0 0 3rem 0;
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     width: 100%;
     max-width: none;
     position: relative;
