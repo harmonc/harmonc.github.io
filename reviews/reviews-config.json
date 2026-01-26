@@ -8,31 +8,8 @@
       "platform": "PC",
       "rating": 8,
       "ratingText": "8/10",
-      "ratingStars": [
-        "<i class=\"fas fa-star\"></i>",
-        "<i class=\"fas fa-star\"></i>",
-        "<i class=\"fas fa-star\"></i>",
-        "<i class=\"fas fa-star\"></i>",
-        "<i class=\"fas fa-star-half-alt\"></i>"
-      ],
-      "tags": [
-        {
-          "name": "Metroidvania",
-          "class": "tag"
-        },
-        {
-          "name": "Indie",
-          "class": "tag"
-        },
-        {
-          "name": "Adventure",
-          "class": "tag"
-        },
-        {
-          "name": "Exploration",
-          "class": "tag"
-        }
-      ],
+
+      "tags": ["Metroidvania","Indie","Adventure","Exploration"],
       "backgroundImage": "mio-title.png",
       "boxArt": "box-art.jpg",
       "developer": "Chanko Studio",

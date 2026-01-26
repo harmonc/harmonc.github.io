@@ -433,7 +433,24 @@
                 safeSetText('final-verdict', currentReview.finalVerdict);
 
                 // Populate rating
-                safeSetHtml('rating-stars', currentReview.ratingStars.join(''));
+                // Generate stars programmatically based on rating
+                const rating = currentReview.rating;
+                const fullStars = Math.floor(rating / 2); // 2 points per star
+                const hasHalfStar = rating % 2 === 1;
+                let starsHtml = '';
+                
+                for (let i = 0; i < fullStars; i++) {
+                    starsHtml += '<i class="fas fa-star"></i>';
+                }
+                if (hasHalfStar) {
+                    starsHtml += '<i class="fas fa-star-half-alt"></i>';
+                }
+                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                for (let i = 0; i < emptyStars; i++) {
+                    starsHtml += '<i class="far fa-star"></i>';
+                }
+                
+                safeSetHtml('rating-stars', starsHtml);
                 safeSetText('rating-text', currentReview.ratingText);
                 safeSetText('verdict-score', currentReview.rating);
                 safeSetText('final-verdict-score', currentReview.rating);
@@ -442,7 +459,7 @@
                 const tagsContainer = document.getElementById('review-tags');
                 if (tagsContainer) {
                     tagsContainer.innerHTML = currentReview.tags.map(tag => 
-                        `<span class="${tag.class}">${tag.name}</span>`
+                        `<span class="tag">${tag}</span>`
                     ).join('');
                 }
 

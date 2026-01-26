@@ -313,6 +313,23 @@
     bottom: 2rem;
 }
 
+/* Review tags styling */
+.review-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.review-tags .tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+}
+
 
 
 
