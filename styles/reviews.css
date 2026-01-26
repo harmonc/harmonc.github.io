@@ -268,49 +268,54 @@
 
 .review-section {
     margin: 0 0 3rem 0;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    background: white;
     border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4rem;
     width: 100%;
     max-width: none;
     position: relative;
+    text-align: center;
 }
 
-/* Add right side cap effect to review sections */
-.review-section::after {
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    width: 4px;
-    height: calc(100% + 2px);
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.4) 0%, 
-        rgba(255, 255, 255, 0.2) 50%, 
-        rgba(255, 255, 255, 0.1) 100%);
-    border-radius: 0 4px 4px 0;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+.review-section * {
+    text-align: left;
 }
 
-/* Add left side cap effect to review sections */
-.review-section::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 4px;
-    height: calc(100% + 2px);
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.4) 0%, 
-        rgba(255, 255, 255, 0.2) 50%, 
-        rgba(255, 255, 255, 0.1) 100%);
-    border-radius: 4px 0 0 4px;
-    z-index: 1;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+.review-section p {
+    text-indent: 2rem;
 }
+
+/* Review-specific scroll-to-top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: -60px;
+    right: 2rem;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 2rem;
+}
+
+
+
+
 
 /* Add top cap for sections */
 .review-section .section-top-cap {
@@ -338,7 +343,7 @@
 .review-text {
     line-height: 1.8;
     color: var(--section-text);
-    width: 100%;
+    width: 95%;
 }
 
 .review-text p {

@@ -104,7 +104,7 @@
             </section>
 
             <!-- Game Info Section -->
-            <section id="game-info" class="section">
+            <!-- <section id="game-info" class="section">
                 <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
                     <div class="game-info-grid">
                         <div class="game-info-card">
@@ -153,12 +153,12 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- Review Content Section -->
-            <section id="review-content" class="section">
-                <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
-                    <div class="review-main-content" style="margin-right: 5px;">
+            <!-- <section id="review-content" class="section"> -->
+                <!-- <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;"> -->
+                    <!-- <div class="review-main-content" style="margin-right: 5px;"> -->
                         <div class="review-section">
                             <div class="section-top-cap"></div>
                             <h2><i class="fas fa-book-open"></i> Review</h2>
@@ -168,7 +168,7 @@
                         </div>
 
                         <!-- Pros and Cons Section -->
-                        <div class="review-section">
+                        <!-- <div class="review-section">
                             <div class="section-top-cap"></div>
                             <h2><i class="fas fa-balance-scale"></i> Pros & Cons</h2>
                             <div class="pros-cons-grid">
@@ -185,10 +185,10 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Technical Details Section -->
-                        <div class="review-section">
+                        <!-- <div class="review-section">
                             <div class="section-top-cap"></div>
                             <h2><i class="fas fa-cog"></i> Technical Details</h2>
                             <div class="technical-details">
@@ -196,13 +196,13 @@
                                     TECHNICAL_DETAILS
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        </div> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+            <!-- </section> -->
 
             <!-- Final Verdict Section -->
-            <section id="final-verdict" class="section">
+            <!-- <section id="final-verdict" class="section">
                 <div class="container" style="max-width: none; padding: 0 2rem; width: 100%;">
                     <div class="review-main-content" style="margin-right: 5px;">
                         <div class="verdict-content">
@@ -223,14 +223,13 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </div>
     </main>
 
     <footer>
         <div class="container">
             <p>&copy; 2026 Caleb Harmon. All rights reserved.</p>
-            <p><a href="../index.html">← Back to Portfolio</a> | <a href="../blog.html">← Back to Blog</a></p>
         </div>
     </footer>
 
@@ -239,6 +238,33 @@
     </button>
 
     <script src="../script.js"></script>
+    <script>
+        // Initialize scroll-to-top functionality after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            
+            if (scrollToTopBtn) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        scrollToTopBtn.classList.add('show');
+                    } else {
+                        scrollToTopBtn.classList.remove('show');
+                    }
+                });
+                
+                // Scroll to top when clicked
+                scrollToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+
+            }
+        });
+    </script>
     <script>
         // Dynamic Review Loader
         class ReviewLoader {
